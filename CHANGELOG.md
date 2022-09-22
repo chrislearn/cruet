@@ -204,7 +204,7 @@ test cases::uppercase::tests::bench_upper                       ... bench:      
 
 ## Fixes:
 
-- Fixes issue https://github.com/whatisinternet/inflector/issues/18
+- Fixes issue https://github.com/whatisinternet/Inflector/issues/18
 - Fixes performance issues overall
 
 ## Benchmarks:

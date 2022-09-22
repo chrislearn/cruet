@@ -7,7 +7,7 @@ use cases::case::*;
 /// Converts a `&str` to `table-case` `String`
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "foo-bar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -15,7 +15,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "FOO_BAR";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -23,7 +23,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "foo_bar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -31,7 +31,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "Foo Bar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -39,7 +39,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "Foo bar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -47,7 +47,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "FooBar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -55,7 +55,7 @@ use cases::case::*;
 /// ```
 ///
 /// ```
-/// use inflector::cases::tablecase::to_table_case;
+/// use cruet::cases::tablecase::to_table_case;
 /// let mock_string: &str = "fooBar";
 /// let expected_string: String = "foo_bars".to_string();
 /// let asserted_string: String = to_table_case(mock_string);
@@ -71,56 +71,56 @@ pub fn to_table_case(non_table_case_string: &str) -> String {
 /// Determines if a `&str` is `table-case`
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "foo_bar_strings";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == true);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "Foo bar string that is really really long";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);
 /// ```
 ///
 /// ```
-///     use inflector::cases::tablecase::is_table_case;
+///     use cruet::cases::tablecase::is_table_case;
 ///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
 ///     let asserted_bool: bool = is_table_case(mock_string);
 ///     assert!(asserted_bool == false);

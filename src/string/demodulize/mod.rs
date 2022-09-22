@@ -1,11 +1,11 @@
 #[cfg(feature = "heavyweight")]
-use cases::classcase::to_class_case;
+use cases::class::to_class_case;
 
 #[cfg(feature = "heavyweight")]
 /// Demodulize a `&str`
 ///
 /// ```
-///     use inflector::string::demodulize::demodulize;
+///     use cruet::string::demodulize::demodulize;
 ///     let mock_string: &str = "Bar";
 ///     let expected_string: String = "Bar".to_owned();
 ///     let asserted_string: String = demodulize(mock_string);
@@ -13,7 +13,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::demodulize::demodulize;
+///     use cruet::string::demodulize::demodulize;
 ///     let mock_string: &str = "::Bar";
 ///     let expected_string: String = "Bar".to_owned();
 ///     let asserted_string: String = demodulize(mock_string);
@@ -21,7 +21,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::demodulize::demodulize;
+///     use cruet::string::demodulize::demodulize;
 ///     let mock_string: &str = "Foo::Bar";
 ///     let expected_string: String = "Bar".to_owned();
 ///     let asserted_string: String = demodulize(mock_string);
@@ -29,7 +29,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::demodulize::demodulize;
+///     use cruet::string::demodulize::demodulize;
 ///     let mock_string: &str = "Test::Foo::Bar";
 ///     let expected_string: String = "Bar".to_owned();
 ///     let asserted_string: String = demodulize(mock_string);

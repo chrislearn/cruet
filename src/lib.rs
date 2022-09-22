@@ -6,7 +6,7 @@
 //! deordinalize, demodulize, deconstantize, and foreign key are supported as
 //! both traits and pure functions acting on String types.
 //! ```rust
-//! use inflector::Inflector;
+//! use cruet::Inflector;
 //! let camel_case_string: String = "some_string".to_camel_case();
 //! let is_camel_cased: bool= camel_case_string.is_camel_case();
 //! assert!(is_camel_cased == true);
@@ -46,38 +46,38 @@ pub mod string;
 
 
 #[cfg(feature = "heavyweight")]
-use cases::classcase::to_class_case;
+use cases::class::to_class_case;
 #[cfg(feature = "heavyweight")]
-use cases::classcase::is_class_case;
+use cases::class::is_class_case;
 
-use cases::camelcase::to_camel_case;
-use cases::camelcase::is_camel_case;
+use cases::camel::to_camel_case;
+use cases::camel::is_camel_case;
 
-use cases::pascalcase::to_pascal_case;
-use cases::pascalcase::is_pascal_case;
+use cases::pascal::to_pascal_case;
+use cases::pascal::is_pascal_case;
 
-use cases::snakecase::to_snake_case;
-use cases::snakecase::is_snake_case;
+use cases::snake::to_snake_case;
+use cases::snake::is_snake_case;
 
-use cases::screamingsnakecase::to_screaming_snake_case;
-use cases::screamingsnakecase::is_screaming_snake_case;
+use cases::screaming_snake::to_screaming_snake_case;
+use cases::screaming_snake::is_screaming_snake_case;
 
-use cases::kebabcase::to_kebab_case;
-use cases::kebabcase::is_kebab_case;
+use cases::kebab::to_kebab_case;
+use cases::kebab::is_kebab_case;
 
-use cases::traincase::to_train_case;
-use cases::traincase::is_train_case;
+use cases::train::to_train_case;
+use cases::train::is_train_case;
 
-use cases::sentencecase::to_sentence_case;
-use cases::sentencecase::is_sentence_case;
+use cases::sentence::to_sentence_case;
+use cases::sentence::is_sentence_case;
 
-use cases::titlecase::to_title_case;
-use cases::titlecase::is_title_case;
+use cases::title::to_title_case;
+use cases::title::is_title_case;
 
 #[cfg(feature = "heavyweight")]
-use cases::tablecase::to_table_case;
+use cases::table::to_table_case;
 #[cfg(feature = "heavyweight")]
-use cases::tablecase::is_table_case;
+use cases::table::is_table_case;
 
 use numbers::ordinalize::ordinalize;
 use numbers::deordinalize::deordinalize;

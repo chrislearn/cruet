@@ -1,25 +1,25 @@
 [package]
-name = "Inflector"
+name = "cruet"
 version = "0.11.4"
-authors = ["Josh Teeter<joshteeter@gmail.com>"]
+authors = ["Josh Teeter<joshteeter@gmail.com>", "Chrislearn Young<chris@kenorld.com>"]
 include = [
   "**/*.rs",
   "Cargo.toml",
   "README.md"
 ]
 readme = "README.md"
-repository = "https://github.com/whatisinternet/inflector"
-documentation = "https://docs.rs/Inflector"
-homepage = "https://github.com/whatisinternet/inflector"
+repository = "https://github.com/chrislearn/cruet"
+documentation = "https://docs.rs/cruet"
+homepage = "https://github.com/chrislearn/cruet"
 license="BSD-2-Clause"
 description = """
 Adds String based inflections for Rust. Snake, kebab, camel, sentence, class, title and table cases as well as ordinalize, deordinalize, demodulize, foreign key, and pluralize/singularize are supported as both traits and pure functions acting on String types.
 """
-keywords = ["pluralize", "Inflector", "camel", "snake", "inflection"]
+keywords = ["pluralize", "cruet", "camel", "snake", "inflection"]
 categories = ["text-processing", "value-formatting"]
 
 [badges]
-travis-ci = { repository = "whatisinternet/Inflector" }
+travis-ci = { repository = "chrislearn/cruet" }
 
 [features]
 default = ['heavyweight']
@@ -27,7 +27,7 @@ unstable = []
 heavyweight = ['regex', 'lazy_static']
 
 [lib]
-name = "inflector"
+name = "cruet"
 
 [dependencies]
 regex = {version = "1.1", optional = true}

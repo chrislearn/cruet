@@ -1,11 +1,11 @@
 #[cfg(feature = "heavyweight")]
-use cases::classcase::to_class_case;
+use cases::class::to_class_case;
 
 #[cfg(feature = "heavyweight")]
 /// Deconstantizes a `&str`
 ///
 /// ```
-///     use inflector::string::deconstantize::deconstantize;
+///     use cruet::string::deconstantize::deconstantize;
 ///     let mock_string: &str = "Bar";
 ///     let expected_string: String = "".to_owned();
 ///     let asserted_string: String = deconstantize(mock_string);
@@ -13,7 +13,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::deconstantize::deconstantize;
+///     use cruet::string::deconstantize::deconstantize;
 ///     let mock_string: &str = "::Bar";
 ///     let expected_string: String = "".to_owned();
 ///     let asserted_string: String = deconstantize(mock_string);
@@ -21,7 +21,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::deconstantize::deconstantize;
+///     use cruet::string::deconstantize::deconstantize;
 ///     let mock_string: &str = "Foo::Bar";
 ///     let expected_string: String = "Foo".to_owned();
 ///     let asserted_string: String = deconstantize(mock_string);
@@ -29,7 +29,7 @@ use cases::classcase::to_class_case;
 ///
 /// ```
 /// ```
-///     use inflector::string::deconstantize::deconstantize;
+///     use cruet::string::deconstantize::deconstantize;
 ///     let mock_string: &str = "Test::Foo::Bar";
 ///     let expected_string: String = "Foo".to_owned();
 ///     let asserted_string: String = deconstantize(mock_string);

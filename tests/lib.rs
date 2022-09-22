@@ -1,8 +1,8 @@
 #![deny(warnings)]
-extern crate inflector;
+extern crate cruet;
 
-use inflector::Inflector;
-use inflector::InflectorNumbers;
+use cruet::Inflector;
+use cruet::InflectorNumbers;
 
 macro_rules! str_tests {
     ( $($test_name:ident => $imp_trait:ident => $to_cast:expr => $casted:expr), *) => {

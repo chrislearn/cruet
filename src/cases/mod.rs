@@ -4,49 +4,49 @@ mod case;
 /// This version singularizes strings.
 ///
 /// Example string `ClassCase`
-pub mod classcase;
+pub mod class;
 
 /// Provides conversion to and detection of camel case strings.
 ///
 /// Example string `camelCase`
-pub mod camelcase;
+pub mod camel;
 
 /// Provides conversion to and detection of snake case strings.
 ///
 /// Example string `snake_case`
-pub mod snakecase;
+pub mod snake;
 
 /// Provides conversion to and detection of screaming snake case strings.
 ///
 /// Example string `SCREAMING_SNAKE_CASE`
-pub mod screamingsnakecase;
+pub mod screaming_snake;
 
 /// Provides conversion to and detection of kebab case strings.
 ///
 /// Example string `kebab-case`
-pub mod kebabcase;
+pub mod kebab;
 
 /// Provides conversion to and detection of train case strings.
 ///
 /// Example string `Train-Case`
-pub mod traincase;
+pub mod train;
 
 /// Provides conversion to and detection of sentence case strings.
 ///
 /// Example string `Sentence case`
-pub mod sentencecase;
+pub mod sentence;
 
 /// Provides conversion to and detection of title case strings.
 ///
 /// Example string `Title Case`
-pub mod titlecase;
+pub mod title;
 
 /// Provides conversion to and detection of table case strings.
 ///
 /// Example string `table_cases`
-pub mod tablecase;
+pub mod table;
 
 /// Provides conversion to pascal case strings.
 ///
 /// Example string `PascalCase`
-pub mod pascalcase;
+pub mod pascal;
