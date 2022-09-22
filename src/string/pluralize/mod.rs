@@ -2,49 +2,31 @@ use crate::string::constants::UNACCONTABLE_WORDS;
 use once_cell::sync::Lazy;
 use regex::Regex;
 
-macro_rules! add_rule {
-    ($r:ident, $rule:expr => $replace:expr) => {
-        $r.push((Regex::new($rule).unwrap(), $replace));
-    };
-}
-
-macro_rules! rules{
-    ($r:ident; $($rule:expr => $replace:expr), *) => {
-        $(
-            add_rule!{$r, $rule => $replace}
-        )*
-    }
-}
-
 static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
-    let mut r = Vec::with_capacity(24);
-    rules![r;
-           r"(\w*)s$" => "s",
-           r"(\w*([^aeiou]ese))$" => "",
-           r"(\w*(ax|test))is$" => "es",
-           r"(\w*(alias|[^aou]us|tlas|gas|ris))$" => "es",
-           r"(\w*(e[mn]u))s?$" => "s",
-           r"(\w*([^l]ias|[aeiou]las|[emjzr]as|[iu]am))$" => "",
-           r"(\w*(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat))(?:us|i)$" => "i",
-           r"(\w*(alumn|alg|vertebr))(?:a|ae)$" => "ae",
-           r"(\w*(seraph|cherub))(?:im)?$" => "im",
-           r"(\w*(her|at|gr))o$" => "oes",
-           r"(\w*(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor))(?:a|um)$" => "a",
-           r"(\w*(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat))(?:a|on)$" => "a",
-           r"(\w*)sis$" => "ses",
-           r"(\w*(kni|wi|li))fe$" => "ves",
-           r"(\w*(ar|l|ea|eo|oa|hoo))f$" => "ves",
-           r"(\w*([^aeiouy]|qu))y$" => "ies",
-           r"(\w*([^ch][ieo][ln]))ey$" => "ies",
-           r"(\w*(x|ch|ss|sh|zz)es)$" => "",
-           r"(\w*(x|ch|ss|sh|zz))$" => "es",
-           r"(\w*(matr|cod|mur|sil|vert|ind|append))(?:ix|ex)$" => "ices",
-           r"(\w*(m|l)(?:ice|ouse))$" => "ice",
-           r"(\w*(pe)(?:rson|ople))$" => "ople",
-           r"(\w*(child))(?:ren)?$" => "ren",
-           r"(\w*eaux)$" => ""
-    ];
-    r
+    vec![(r"(\w*)s$", "s"),
+           (r"(\w*([^aeiou]ese))$", ""),
+           (r"(\w*(ax|test))is$", "es"),
+           (r"(\w*(alias|[^aou]us|tlas|gas|ris))$", "es"),
+           (r"(\w*(e[mn]u))s?$", "s"),
+           (r"(\w*([^l]ias|[aeiou]las|[emjzr]as|[iu]am))$", ""),
+           (r"(\w*(alumn|syllab|octop|vir|radi|nucle|fung|cact|stimul|termin|bacill|foc|uter|loc|strat))(?:us|i)$", "i"),
+           (r"(\w*(alumn|alg|vertebr))(?:a|ae)$", "ae"),
+           (r"(\w*(seraph|cherub))(?:im)?$", "im"),
+           (r"(\w*(her|at|gr))o$", "oes"),
+           (r"(\w*(agend|addend|millenni|dat|extrem|bacteri|desiderat|strat|candelabr|errat|ov|symposi|curricul|automat|quor))(?:a|um)$", "a"),
+           (r"(\w*(apheli|hyperbat|periheli|asyndet|noumen|phenomen|criteri|organ|prolegomen|hedr|automat))(?:a|on)$", "a"),
+           (r"(\w*)sis$", "ses"),
+           (r"(\w*(kni|wi|li))fe$", "ves"),
+           (r"(\w*(ar|l|ea|eo|oa|hoo))f$", "ves"),
+           (r"(\w*([^aeiouy]|qu))y$", "ies"),
+           (r"(\w*([^ch][ieo][ln]))ey$", "ies"),
+           (r"(\w*(x|ch|ss|sh|zz)es)$", ""),
+           (r"(\w*(x|ch|ss|sh|zz))$", "es"),
+           (r"(\w*(matr|cod|mur|sil|vert|ind|append))(?:ix|ex)$", "ices"),
+           (r"(\w*(m|l)(?:ice|ouse))$", "ice"),
+           (r"(\w*(pe)(?:rson|ople))$", "ople"),
+           (r"(\w*(child))(?:ren)?$", "ren"),
+           (r"(\w*eaux)$", "")].into_iter().map(|(rule, replace)| {(Regex::new(rule).unwrap(), replace)}).collect()
 });
 
 macro_rules! special_cases{
@@ -120,7 +102,7 @@ macro_rules! special_cases{
 /// ```
 ///
 pub fn to_plural(non_plural_string: &str) -> String {
-    if UNACCONTABLE_WORDS.contains(&non_plural_string.as_ref()) {
+    if UNACCONTABLE_WORDS.contains(&non_plural_string) {
         non_plural_string.to_owned()
     } else {
         special_cases![non_plural_string,
@@ -136,7 +118,7 @@ pub fn to_plural(non_plural_string: &str) -> String {
             "quiz" => "quizzes"
         ];
         for &(ref rule, replace) in RULES.iter().rev() {
-            if let Some(c) = rule.captures(&non_plural_string) {
+            if let Some(c) = rule.captures(non_plural_string) {
                 if let Some(c) = c.get(1) {
                     return format!("{}{}", c.as_str(), replace);
                 }

@@ -50,10 +50,6 @@ pub mod table;
 /// Example string `PascalCase`
 pub mod pascal;
 
-#[allow(unknown_lints)]
-#[allow(unused_imports)]
-use std::ascii::*;
-
 #[doc(hidden)]
 pub struct CamelOptions {
     pub new_word: bool,
@@ -72,9 +68,9 @@ pub fn to_case_snake_like(convertable_string: &str, replace_with: &str, case: &s
         if char_is_seperator(&char_with_index.1) {
             if !first_character {
                 first_character = true;
-                result.push(replace_with.chars().nth(0).unwrap_or('_'));
+                result.push(replace_with.chars().next().unwrap_or('_'));
             }
-        } else if requires_seperator(char_with_index, first_character, &convertable_string) {
+        } else if requires_seperator(char_with_index, first_character, convertable_string) {
             first_character = false;
             result = snake_like_with_seperator(result, replace_with, &char_with_index.1, case)
         } else {
@@ -191,11 +187,11 @@ fn snake_like_with_seperator(
     case: &str,
 ) -> String {
     if case == "lower" {
-        accumlator.push(replace_with.chars().nth(0).unwrap_or('_'));
+        accumlator.push(replace_with.chars().next().unwrap_or('_'));
         accumlator.push(current_char.to_ascii_lowercase());
         accumlator
     } else {
-        accumlator.push(replace_with.chars().nth(0).unwrap_or('_'));
+        accumlator.push(replace_with.chars().next().unwrap_or('_'));
         accumlator.push(current_char.to_ascii_uppercase());
         accumlator
     }

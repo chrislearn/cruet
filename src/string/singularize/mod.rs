@@ -76,7 +76,7 @@ macro_rules! special_cases{
 /// ```
 ///
 pub fn to_singular(non_singular_string: &str) -> String {
-    if UNACCONTABLE_WORDS.contains(&non_singular_string.as_ref()) {
+    if UNACCONTABLE_WORDS.contains(&non_singular_string) {
         non_singular_string.to_owned()
     } else {
         special_cases![non_singular_string,
@@ -93,7 +93,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
             "quizzes" => "quiz"
         ];
         for &(ref rule, replace) in RULES.iter().rev() {
-            if let Some(captures) = rule.captures(&non_singular_string) {
+            if let Some(captures) = rule.captures(non_singular_string) {
                 if let Some(c) = captures.get(1) {
                     let mut buf = String::new();
                     captures.expand(&format!("{}{}", c.as_str(), replace), &mut buf);
@@ -102,56 +102,46 @@ pub fn to_singular(non_singular_string: &str) -> String {
             }
         }
 
-        format!("{}", non_singular_string)
-    }
-}
-
-macro_rules! add_rule {
-    ($r:ident, $rule:expr => $replace:expr) => {
-        $r.push((Regex::new($rule).unwrap(), $replace));
-    };
-}
-
-macro_rules! rules{
-    ($r:ident; $($rule:expr => $replace:expr), *) => {
-        $(
-            add_rule!{$r, $rule => $replace}
-        )*
+        non_singular_string.to_owned()
     }
 }
 
 static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
-    let mut r = Vec::with_capacity(27);
-    rules![r;
-    r"(\w*)s$" => "",
-    r"(\w*)(ss)$" => "$2",
-    r"(n)ews$" => "ews",
-    r"(\w*)(o)es$" => "",
-    r"(\w*)([ti])a$" => "um",
-    r"((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$" => "sis",
-    r"(^analy)(sis|ses)$" => "sis",
-    r"(\w*)([^f])ves$" => "fe",
-    r"(\w*)(hive)s$" => "",
-    r"(\w*)(tive)s$" => "",
-    r"(\w*)([lr])ves$" => "f",
-    r"(\w*([^aeiouy]|qu))ies$" => "y",
-    r"(s)eries$" => "eries",
-    r"(m)ovies$" => "ovie",
-    r"(\w*)(x|ch|ss|sh)es$" => "$2",
-    r"(m|l)ice$" => "ouse",
-    r"(bus)(es)?$" => "",
-    r"(shoe)s$" => "",
-    r"(cris|test)(is|es)$" => "is",
-    r"^(a)x[ie]s$" => "xis",
-    r"(octop|vir)(us|i)$" => "us",
-    r"(alias|status)(es)?$" => "",
-    r"^(ox)en" => "",
-    r"(vert|ind)ices$" => "ex",
-    r"(matr)ices$" => "ix",
-    r"(quiz)zes$" => "",
-    r"(database)s$" => ""
-        ];
-    r
+    vec![
+        (r"(\w*)s$", ""),
+        (r"(\w*)(ss)$", "$2"),
+        (r"(n)ews$", "ews"),
+        (r"(\w*)(o)es$", ""),
+        (r"(\w*)([ti])a$", "um"),
+        (
+            r"((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$",
+            "sis",
+        ),
+        (r"(^analy)(sis|ses)$", "sis"),
+        (r"(\w*)([^f])ves$", "fe"),
+        (r"(\w*)(hive)s$", ""),
+        (r"(\w*)(tive)s$", ""),
+        (r"(\w*)([lr])ves$", "f"),
+        (r"(\w*([^aeiouy]|qu))ies$", "y"),
+        (r"(s)eries$", "eries"),
+        (r"(m)ovies$", "ovie"),
+        (r"(\w*)(x|ch|ss|sh)es$", "$2"),
+        (r"(m|l)ice$", "ouse"),
+        (r"(bus)(es)?$", ""),
+        (r"(shoe)s$", ""),
+        (r"(cris|test)(is|es)$", "is"),
+        (r"^(a)x[ie]s$", "xis"),
+        (r"(octop|vir)(us|i)$", "us"),
+        (r"(alias|status)(es)?$", ""),
+        (r"^(ox)en", ""),
+        (r"(vert|ind)ices$", "ex"),
+        (r"(matr)ices$", "ix"),
+        (r"(quiz)zes$", ""),
+        (r"(database)s$", ""),
+    ]
+    .into_iter()
+    .map(|(rule, replace)| (Regex::new(rule).unwrap(), replace))
+    .collect()
 });
 
 #[test]

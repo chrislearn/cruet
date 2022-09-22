@@ -57,7 +57,7 @@ use crate::cases::*;
 ///
 /// ```
 pub fn is_train_case(test_string: &str) -> bool {
-    test_string == to_train_case(test_string.clone())
+    test_string == to_train_case(test_string)
 }
 
 /// Converts a `&str` to `Train-Case` `String`
