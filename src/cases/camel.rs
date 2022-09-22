@@ -1,5 +1,4 @@
-#![deny(warnings)]
-use cases::case::*;
+use crate::cases::*;
 
 /// Converts a `&str` to camelCase `String`
 ///
@@ -211,8 +210,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use ::to_camel_case;
-    use ::is_camel_case;
+    use is_camel_case;
+    use to_camel_case;
 
     #[test]
     fn from_camel_case() {
@@ -307,7 +306,8 @@ mod tests {
 
     #[test]
     fn wrapped_in_bad_chars() {
-        let convertable_string: String = "-!#$%wrapped in bad chars&*^*&(&*^&(<><?>><?><>))".to_owned();
+        let convertable_string: String =
+            "-!#$%wrapped in bad chars&*^*&(&*^&(<><?>><?><>))".to_owned();
         let expected: String = "wrappedInBadChars".to_owned();
         assert_eq!(to_camel_case(&convertable_string), expected)
     }
@@ -367,4 +367,3 @@ mod tests {
         assert_eq!(is_camel_case(&convertable_string), false)
     }
 }
-

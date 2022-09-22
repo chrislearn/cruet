@@ -1,5 +1,4 @@
-#![deny(warnings)]
-use cases::case::*;
+use crate::cases::*;
 /// Converts a `&str` to `SCREAMING_SNAKE_CASE` `String`
 ///
 /// ```
@@ -124,7 +123,6 @@ pub fn is_screaming_snake_case(test_string: &str) -> bool {
     test_string == to_screaming_snake_case(test_string.clone())
 }
 
-
 #[cfg(all(feature = "unstable", test))]
 mod benchmarks {
     extern crate test;
@@ -139,13 +137,12 @@ mod benchmarks {
     fn bench_is_screaming_snake(b: &mut Bencher) {
         b.iter(|| super::is_screaming_snake_case("Foo bar"));
     }
-
 }
 
 #[cfg(test)]
 mod tests {
-    use ::to_screaming_snake_case;
-    use ::is_screaming_snake_case;
+    use is_screaming_snake_case;
+    use to_screaming_snake_case;
 
     #[test]
     fn from_camel_case() {

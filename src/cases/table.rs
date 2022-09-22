@@ -1,9 +1,7 @@
-#![deny(warnings)]
-#[cfg(feature = "heavyweight")]
-use string::pluralize::to_plural;
-#[cfg(feature = "heavyweight")]
-use cases::case::*;
-#[cfg(feature = "heavyweight")]
+use crate::cases::*;
+
+use crate::string::pluralize::to_plural;
+
 /// Converts a `&str` to `table-case` `String`
 ///
 /// ```
@@ -67,7 +65,6 @@ pub fn to_table_case(non_table_case_string: &str) -> String {
     format!("{}{}", split.0, to_plural(split.1))
 }
 
-#[cfg(feature = "heavyweight")]
 /// Determines if a `&str` is `table-case`
 ///
 /// ```
@@ -126,11 +123,11 @@ pub fn to_table_case(non_table_case_string: &str) -> String {
 ///     assert!(asserted_bool == false);
 /// ```
 pub fn is_table_case(test_string: &str) -> bool {
-     to_table_case(&test_string.clone()) == test_string
+    to_table_case(&test_string.clone()) == test_string
 }
 
 #[cfg(all(feature = "unstable", test))]
-#[cfg(feature = "heavyweight")]
+
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;
@@ -147,10 +144,10 @@ mod benchmarks {
 }
 
 #[cfg(test)]
-#[cfg(feature = "heavyweight")]
+
 mod tests {
-    use ::to_table_case;
-    use ::is_table_case;
+    use is_table_case;
+    use to_table_case;
 
     #[test]
     fn from_camel_case() {

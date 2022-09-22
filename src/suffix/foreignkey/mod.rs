@@ -1,4 +1,4 @@
-use cases::snake::to_snake_case;
+use crate::cases::snake::to_snake_case;
 
 /// Converts a `&str` to a `foreign_key`
 ///

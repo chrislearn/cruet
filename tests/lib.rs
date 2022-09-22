@@ -1,4 +1,3 @@
-#![deny(warnings)]
 extern crate cruet;
 
 use cruet::Inflector;
@@ -42,7 +41,7 @@ macro_rules! gated_str_tests {
     ( $($test_name:ident => $imp_trait:ident => $to_cast:expr => $casted:expr), *) => {
         $(
             #[test]
-            #[cfg(feature = "heavyweight")]
+
             fn $test_name() {
                 assert_eq!($to_cast.$imp_trait(), $casted)
             }
@@ -54,7 +53,7 @@ macro_rules! gated_string_tests {
     ( $($test_name:ident => $imp_trait:ident => $to_cast:expr => $casted:expr), *) => {
         $(
             #[test]
-            #[cfg(feature = "heavyweight")]
+
             fn $test_name() {
                 assert_eq!($to_cast.to_string().$imp_trait(), $casted)
             }

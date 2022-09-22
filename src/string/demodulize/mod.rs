@@ -1,7 +1,5 @@
-#[cfg(feature = "heavyweight")]
-use cases::class::to_class_case;
+use crate::cases::class::to_class_case;
 
-#[cfg(feature = "heavyweight")]
 /// Demodulize a `&str`
 ///
 /// ```
