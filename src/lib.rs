@@ -78,8 +78,8 @@ use cases::table::to_table_case;
 use numbers::deordinalize::deordinalize;
 use numbers::ordinalize::ordinalize;
 
-use suffix::foreignkey::is_foreign_key;
-use suffix::foreignkey::to_foreign_key;
+use suffix::foreign_key::is_foreign_key;
+use suffix::foreign_key::to_foreign_key;
 
 use string::deconstantize::deconstantize;
 use string::demodulize::demodulize;
