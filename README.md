@@ -2,7 +2,7 @@
 
 This project is forked from https://github.com/whatisinternet/Inflector. The original author doesn't maintain this anymore.
 
-[![Build Status](https://travis-ci.org/chrislearn/cruet.svg?branch=master)](https://travis-ci.org/chrislearn/cruet) [![Crates.io](https://img.shields.io/crates/v/Inflector.svg)](https://crates.io/crates/cruet)[![Crate downloads](https://img.shields.io/crates/d/cruet.svg)](https://crates.io/crates/cruet)
+[![Build Status](https://travis-ci.org/chrislearn/cruet.svg?branch=master)](https://travis-ci.org/chrislearn/cruet) [![Crates.io](https://img.shields.io/crates/v/cruet.svg)](https://crates.io/crates/cruet)[![Crate downloads](https://img.shields.io/crates/d/cruet.svg)](https://crates.io/crates/cruet)
 
 
 Adds String based inflections for Rust. Snake, kebab, train, camel,
