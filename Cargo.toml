@@ -1,6 +1,6 @@
 [package]
 name = "cruet"
-version = "0.12.0"
+version = "0.13.0"
 authors = ["Josh Teeter<joshteeter@gmail.com>", "Chrislearn Young<chris@kenorld.com>"]
 edition = "2021"
 include = ["**/*.rs", "Cargo.toml", "README.md"]

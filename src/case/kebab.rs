@@ -1,4 +1,4 @@
-use crate::cases::*;
+use crate::case::*;
 /// Determines if a `&str` is `kebab-case`
 ///
 /// ```

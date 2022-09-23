@@ -1,4 +1,4 @@
-use crate::cases::*;
+use crate::case::*;
 use crate::string::singularize::to_singular;
 
 /// Converts a `&str` to `ClassCase` `String`

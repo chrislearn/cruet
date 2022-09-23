@@ -1,4 +1,4 @@
-use crate::cases::*;
+use crate::case::*;
 /// Converts a `&str` to `SCREAMING_SNAKE_CASE` `String`
 ///
 /// ```

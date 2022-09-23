@@ -40,7 +40,6 @@ cruet = "*"
 ```rust
 ...
 // to use methods like String.to_lower_case();
-extern crate cruet;
 use cruet::Inflector;
 ...
 fn main() {
@@ -56,49 +55,49 @@ Or
 ```rust
 ...
 // to use methods like to_snake_case(&str);
-extern crate cruet;
+use cruet;
 
-// use cruet::cases::classcase::to_class_case;
-// use cruet::cases::classcase::is_class_case;
+// use cruet::to_class_case;
+// use cruet::is_class_case;
 
-// use cruet::cases::camelcase::to_camel_case;
-// use cruet::cases::camelcase::is_camel_case;
+// use cruet::to_camel_case;
+// use cruet::is_camel_case;
 
-// use cruet::cases::pascalcase::to_pascal_case;
-// use cruet::cases::pascalcase::is_pascal_case;
+// use cruet::to_pascal_case;
+// use cruet::is_pascal_case;
 
-// use cruet::cases::screamingsnakecase::to_screamingsnake_case;
-// use cruet::cases::screamingsnakecase::is_screamingsnake_case;
+// use cruet::to_screamingsnake_case;
+// use cruet::is_screamingsnake_case;
 
-// use cruet::cases::snakecase::to_snake_case;
-// use cruet::cases::snakecase::is_snake_case;
+// use cruet::to_snake_case;
+// use cruet::is_snake_case;
 
-// use cruet::cases::kebabcase::to_kebab_case;
-// use cruet::cases::kebabcase::is_kebab_case;
+// use cruet::to_kebab_case;
+// use cruet::is_kebab_case;
 
-// use cruet::cases::traincase::to_train_case;
-// use cruet::cases::traincase::is_train_case;
+// use cruet::to_train_case;
+// use cruet::is_train_case;
 
-// use cruet::cases::sentencecase::to_sentence_case;
-// use cruet::cases::sentencecase::is_sentence_case;
+// use cruet::to_sentence_case;
+// use cruet::is_sentence_case;
 
-// use cruet::cases::titlecase::to_title_case;
-// use cruet::cases::titlecase::is_title_case;
+// use cruet::to_title_case;
+// use cruet::is_title_case;
 
-// use cruet::cases::tablecase::to_table_case;
-// use cruet::cases::tablecase::is_table_case;
+// use cruet::to_table_case;
+// use cruet::is_table_case;
 
-// use cruet::numbers::ordinalize::ordinalize;
-// use cruet::numbers::deordinalize::deordinalize;
+// use cruet::ordinalize;
+// use cruet::deordinalize;
 
-// use cruet::suffix::foreignkey::to_foreign_key;
-// use cruet::suffix::foreignkey::is_foreign_key;
+// use cruet::to_foreign_key;
+// use cruet::is_foreign_key;
 
-// use cruet::string::demodulize::demodulize;
-// use cruet::string::deconstantize::deconstantize;
+// use cruet::demodulize;
+// use cruet::deconstantize;
 
-// use cruet::string::pluralize::to_plural;
-// use cruet::string::singularize::to_singular;
+// use cruet::to_plural;
+// use cruet::to_singular;
 ...
 fn main() {
 ...

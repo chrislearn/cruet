@@ -1,4 +1,4 @@
-use crate::cases::class::to_class_case;
+use crate::case::class::to_class_case;
 
 /// Demodulize a `&str`
 ///

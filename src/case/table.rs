@@ -1,4 +1,4 @@
-use crate::cases::*;
+use crate::case::*;
 
 use crate::string::pluralize::to_plural;
 

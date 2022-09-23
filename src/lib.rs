@@ -28,11 +28,11 @@
 /// - Sentence case
 /// - Snake case
 /// - Pascal case
-pub mod cases;
+pub mod case;
 /// Provides number inflections
 /// - Ordinalize
 /// - Deordinalize
-pub mod numbers;
+pub mod number;
 /// Provides string inflections
 /// - Deconstantize
 /// - Demodulize
@@ -43,48 +43,46 @@ pub mod string;
 /// - Foreign key
 pub mod suffix;
 
-use crate::cases::class::is_class_case;
+pub use case::class::is_class_case;
+pub use case::class::to_class_case;
 
-use crate::cases::class::to_class_case;
+pub use case::camel::is_camel_case;
+pub use case::camel::to_camel_case;
 
-use crate::cases::camel::is_camel_case;
-use crate::cases::camel::to_camel_case;
+pub use case::pascal::is_pascal_case;
+pub use case::pascal::to_pascal_case;
 
-use cases::pascal::is_pascal_case;
-use cases::pascal::to_pascal_case;
+pub use case::snake::is_snake_case;
+pub use case::snake::to_snake_case;
 
-use cases::snake::is_snake_case;
-use cases::snake::to_snake_case;
+pub use case::screaming_snake::is_screaming_snake_case;
+pub use case::screaming_snake::to_screaming_snake_case;
 
-use cases::screaming_snake::is_screaming_snake_case;
-use cases::screaming_snake::to_screaming_snake_case;
+pub use case::kebab::is_kebab_case;
+pub use case::kebab::to_kebab_case;
 
-use cases::kebab::is_kebab_case;
-use cases::kebab::to_kebab_case;
+pub use case::train::is_train_case;
+pub use case::train::to_train_case;
 
-use cases::train::is_train_case;
-use cases::train::to_train_case;
+pub use case::sentence::is_sentence_case;
+pub use case::sentence::to_sentence_case;
 
-use cases::sentence::is_sentence_case;
-use cases::sentence::to_sentence_case;
+pub use case::title::is_title_case;
+pub use case::title::to_title_case;
 
-use cases::title::is_title_case;
-use cases::title::to_title_case;
+pub use case::table::is_table_case;
+pub use case::table::to_table_case;
 
-use cases::table::is_table_case;
+pub use number::deordinalize::deordinalize;
+pub use number::ordinalize::ordinalize;
 
-use cases::table::to_table_case;
+pub use suffix::foreign_key::is_foreign_key;
+pub use suffix::foreign_key::to_foreign_key;
 
-use numbers::deordinalize::deordinalize;
-use numbers::ordinalize::ordinalize;
-
-use suffix::foreign_key::is_foreign_key;
-use suffix::foreign_key::to_foreign_key;
-
-use string::deconstantize::deconstantize;
-use string::demodulize::demodulize;
-use string::pluralize::to_plural;
-use crate::string::singularize::to_singular;
+pub use string::deconstantize::deconstantize;
+pub use string::demodulize::demodulize;
+pub use string::pluralize::to_plural;
+pub use string::singularize::to_singular;
 
 #[allow(missing_docs)]
 pub trait Inflector {
