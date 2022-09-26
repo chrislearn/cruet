@@ -4,84 +4,16 @@ use crate::string::singularize::to_singular;
 /// Converts a `&str` to `ClassCase` `String`
 ///
 /// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "FooBars";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "Foo Bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "foo-bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "foo_bars";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::to_class_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_class_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_class_case;
+/// 
+/// assert_eq!(to_class_case("FooBar"), "FooBar");
+/// assert_eq!(to_class_case("FooBars"), "FooBar");
+/// assert_eq!(to_class_case("Foo Bar"), "FooBar");
+/// assert_eq!(to_class_case("foo-bar"), "FooBar");
+/// assert_eq!(to_class_case("fooBar"), "FooBar");
+/// assert_eq!(to_class_case("FOO_BAR"), "FooBar");
+/// assert_eq!(to_class_case("foo_bars"), "FooBar");
+/// assert_eq!(to_class_case("Foo bar"), "FooBar");
 /// ```
 pub fn to_class_case(non_class_case_string: &str) -> String {
     let options = CamelOptions {
@@ -101,93 +33,20 @@ pub fn to_class_case(non_class_case_string: &str) -> String {
 /// Determines if a `&str` is `ClassCase` `bool`
 ///
 /// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "Foo";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "foo";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongStrings";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "foo_bar_is_a_really_really_long_strings";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::classcase::is_class_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_class_case(mock_string);
-///     assert!(asserted_bool == false);
-///
+/// use cruet::cases::is_class_case;
+/// 
+/// assert!(is_class_case("Foo"));
+/// assert!(is_class_case("FooBarIsAReallyReallyLongString"));
+/// 
+/// assert_ne!(is_class_case("foo"));
+/// assert_ne!(is_class_case("FooBarIsAReallyReallyLongStrings"));
+/// assert_ne!(is_class_case("foo-bar-string-that-is-really-really-long"));
+/// assert_ne!(is_class_case("foo_bar_is_a_really_really_long_strings"));
+/// assert_ne!(is_class_case("fooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_class_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert_ne!(is_class_case("foo_bar_string_that_is_really_really_long"));
+/// assert_ne!(is_class_case("Foo bar string that is really really long"));
+/// assert_ne!(is_class_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_class_case(test_string: &str) -> bool {
     to_class_case(test_string) == test_string

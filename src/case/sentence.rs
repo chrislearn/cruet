@@ -2,52 +2,14 @@ use crate::case::*;
 /// Converts a `&str` to `Sentence case` `String`
 ///
 /// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::to_sentence_case;
-///     let mock_string: &str = "foo-bar";
-///     let expected_string: String = "Foo bar".to_string();
-///     let asserted_string: String = to_sentence_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_sentence_case;
+/// 
+/// assert_eq!(to_sentence_case("Foo bar"), "Foo bar");
+/// assert_eq!(to_sentence_case("FooBar"), "Foo bar");
+/// assert_eq!(to_sentence_case("fooBar"), "Foo bar");
+/// assert_eq!(to_sentence_case("FOO_BAR"), "Foo bar");
+/// assert_eq!(to_sentence_case("foo_bar"), "Foo bar");
+/// assert_eq!(to_sentence_case("foo-bar"), "Foo bar");
 /// ```
 pub fn to_sentence_case(non_sentence_case_string: &str) -> String {
     let options = CamelOptions {
@@ -63,67 +25,18 @@ pub fn to_sentence_case(non_sentence_case_string: &str) -> String {
 /// Determines of a `&str` is `Sentence case`
 ///
 /// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "Foo";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "foo";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::sentencecase::is_sentence_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_sentence_case(mock_string);
-///     assert!(asserted_bool == true);
-///
+/// use cruet::case::is_sentence_case;
+/// 
+/// assert!(is_sentence_case("Foo"));
+/// assert!(is_sentence_case("Foo bar string that is really really long"));
+/// 
+/// assert_ne!(is_sentence_case("foo-bar-string-that-is-really-really-long"));
+/// assert_ne!(is_sentence_case("FooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_sentence_case("fooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_sentence_case("Foo Bar Is A Really Really Long String"));
+/// assert_ne!(is_sentence_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert_ne!(is_sentence_case("foo_bar_string_that_is_really_really_long"));
+/// assert_ne!(is_sentence_case("foo"));
 /// ```
 pub fn is_sentence_case(test_string: &str) -> bool {
     test_string == to_sentence_case(test_string)

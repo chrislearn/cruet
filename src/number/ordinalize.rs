@@ -1,115 +1,115 @@
 /// Orginalizes a `&str`
 ///
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "a";
-///     let expected_string: String = "a".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "a";
+/// let expected_string: String = "a".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "0.1";
-///     let expected_string: String = "0.1".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "0.1";
+/// let expected_string: String = "0.1".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "-1";
-///     let expected_string: String = "-1st".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "-1";
+/// let expected_string: String = "-1st".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "0";
-///     let expected_string: String = "0th".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "0";
+/// let expected_string: String = "0th".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "1";
-///     let expected_string: String = "1st".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "1";
+/// let expected_string: String = "1st".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "2";
-///     let expected_string: String = "2nd".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "2";
+/// let expected_string: String = "2nd".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "3";
-///     let expected_string: String = "3rd".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "3";
+/// let expected_string: String = "3rd".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "9";
-///     let expected_string: String = "9th".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "9";
+/// let expected_string: String = "9th".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12";
-///     let expected_string: String = "12th".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12";
+/// let expected_string: String = "12th".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12000";
-///     let expected_string: String = "12000th".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12000";
+/// let expected_string: String = "12000th".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12001";
-///     let expected_string: String = "12001st".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12001";
+/// let expected_string: String = "12001st".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12002";
-///     let expected_string: String = "12002nd".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12002";
+/// let expected_string: String = "12002nd".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12003";
-///     let expected_string: String = "12003rd".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12003";
+/// let expected_string: String = "12003rd".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::numbers::ordinalize::ordinalize;
-///     let mock_string: &str = "12004";
-///     let expected_string: String = "12004th".to_owned();
-///     let asserted_string: String = ordinalize(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::number::ordinalize::ordinalize;
+/// let mock_string: &str = "12004";
+/// let expected_string: String = "12004th".to_owned();
+/// let asserted_string: String = ordinalize(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 pub fn ordinalize(non_ordinalized_string: &str) -> String {

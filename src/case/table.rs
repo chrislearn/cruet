@@ -13,7 +13,7 @@ use crate::string::pluralize::to_plural;
 /// assert_eq!(to_table_case("Foo Bar"), "foo_bars");
 /// assert_eq!(to_table_case("Foo bar"), "foo_bars");
 /// assert_eq!(to_table_case("FooBar"), "foo_bars");
-/// assert_eq!(to_table_case("fooBar"), "foo_bars");aqa
+/// assert_eq!(to_table_case("fooBar"), "foo_bars");
 /// ```
 pub fn to_table_case(non_table_case_string: &str) -> String {
     let snaked: String = to_case_snake_like(non_table_case_string, "_", "lower");

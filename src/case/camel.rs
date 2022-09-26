@@ -3,76 +3,17 @@ use crate::case::*;
 /// Converts a `&str` to camelCase `String`
 ///
 /// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "Foo Bar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "foo-bar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "FooBar3";
-///     let expected_string: String = "fooBar3".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::to_camel_case;
-///     let mock_string: &str = "Foo-Bar";
-///     let expected_string: String = "fooBar".to_string();
-///     let asserted_string: String = to_camel_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_camel_case;
+/// 
+/// assert_eq!(to_camel_case("fooBar"), "fooBar");
+/// assert_eq!(to_camel_case("FOO_BAR"), "fooBar");
+/// assert_eq!(to_camel_case("Foo Bar"), "fooBar");
+/// assert_eq!(to_camel_case("foo_bar"), "fooBar");
+/// assert_eq!(to_camel_case("Foo bar"), "fooBar");
+/// assert_eq!(to_camel_case("foo-bar"), "fooBar");
+/// assert_eq!(to_camel_case("FooBar"), "fooBar");
+/// assert_eq!(to_camel_case("FooBar3"), "fooBar3");
+/// assert_eq!(to_camel_case("Foo-Bar"), "fooBar");
 /// ```
 pub fn to_camel_case(non_camelized_string: &str) -> String {
     let options = CamelOptions {
@@ -89,82 +30,19 @@ pub fn to_camel_case(non_camelized_string: &str) -> String {
 /// Determines if a `&str` is camelCase bool``
 ///
 /// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "Foo";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "foo";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "fooBarIsAReallyReally3LongString";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::camelcase::is_camel_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_camel_case(mock_string);
-///     assert!(asserted_bool == false);
+/// use cruet::case::is_camel_case;
+/// 
+/// assert!(is_camel_case("foo"));
+/// assert!(is_camel_case("fooBarIsAReallyReally3LongString"));
+/// assert!(is_camel_case("fooBarIsAReallyReallyLongString"));
+/// 
+/// assert_eq!(is_camel_case("Foo"));
+/// assert_eq!(is_camel_case("foo-bar-string-that-is-really-really-long"));
+/// assert_eq!(is_camel_case("FooBarIsAReallyReallyLongString"));
+/// assert_eq!(is_camel_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert_eq!(is_camel_case("foo_bar_string_that_is_really_really_long"));
+/// assert_eq!(is_camel_case("Foo bar string that is really really long"));
+/// assert_eq!(is_camel_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_camel_case(test_string: &str) -> bool {
     to_camel_case(test_string) == test_string

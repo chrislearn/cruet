@@ -2,59 +2,15 @@ use crate::case::*;
 /// Determines if a `&str` is `kebab-case`
 ///
 /// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::is_kebab_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_kebab_case(mock_string);
-///     assert!(asserted_bool == false);
-///
+/// use cruet::case::is_kebab_case;
+/// 
+/// assert!(is_kebab_case("foo-bar-string-that-is-really-really-long"));
+/// assert_ne!(is_kebab_case("FooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_kebab_case("fooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_kebab_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert_ne!(is_kebab_case("foo_bar_string_that_is_really_really_long"));
+/// assert_ne!(is_kebab_case("Foo bar string that is really really long"));
+/// assert_ne!(is_kebab_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_kebab_case(test_string: &str) -> bool {
     test_string == to_kebab_case(test_string)
@@ -63,66 +19,15 @@ pub fn is_kebab_case(test_string: &str) -> bool {
 /// Converts a `&str` to `kebab-case` `String`
 ///
 /// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "foo-bar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "Foo Bar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-///     use cruet::cases::kebabcase::to_kebab_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "foo-bar".to_string();
-///     let asserted_string: String = to_kebab_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_kebab_case;
+/// 
+/// assert_eq!(to_kebab_case("foo-bar"), "foo-bar");
+/// assert_eq!(to_kebab_case("FOO_BAR"), "foo-bar");
+/// assert_eq!(to_kebab_case("foo_bar"), "foo-bar");
+/// assert_eq!(to_kebab_case("Foo Bar"),"foo-bar");
+/// assert_eq!(to_kebab_case("Foo bar"), "foo-bar");
+/// assert_eq!(to_kebab_case("FooBar"), "foo-bar");
+/// assert_eq!(to_kebab_case("fooBar"), "foo-bar");
 /// ```
 pub fn to_kebab_case(non_kebab_case_string: &str) -> String {
     to_case_snake_like(non_kebab_case_string, "-", "lower")

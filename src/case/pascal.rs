@@ -2,68 +2,20 @@ use crate::case::*;
 /// Converts a `&str` to pascalCase `String`
 ///
 /// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "Foo Bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "foo-bar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "FooBar".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::to_pascal_case;
-///     let mock_string: &str = "FooBar3";
-///     let expected_string: String = "FooBar3".to_string();
-///     let asserted_string: String = to_pascal_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_pascal_case;
+/// 
+/// assert_eq!(to_pascal_case("fooBar"), "FooBar");
+/// assert_eq!(to_pascal_case("FOO_BAR"), "FooBar");
+/// assert_eq!(to_pascal_case("Foo Bar"), "FooBar");
+/// assert_eq!(to_pascal_case("foo_bar"), "FooBar");
+/// assert_eq!(to_pascal_case("Foo bar"), "FooBar");
+/// assert_eq!(to_pascal_case("foo-bar"), "FooBar");
+/// assert_eq!(to_pascal_case("FooBar"), "FooBar");
+/// assert_eq!(to_pascal_case("FooBar3"), "FooBar3");
+/// assert_eq!(to_pascal_case(""), "FooBar");
+/// assert_eq!(to_pascal_case(""), "FooBar");
+/// assert_eq!(to_pascal_case(""), "FooBar");
+/// assert_eq!(to_pascal_case(""), "FooBar");
 /// ```
 pub fn to_pascal_case(non_pascalized_string: &str) -> String {
     let options = CamelOptions {
@@ -80,82 +32,19 @@ pub fn to_pascal_case(non_pascalized_string: &str) -> String {
 /// Determines if a `&str` is pascalCase bool``
 ///
 /// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "Foo";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "foo";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "FooBarIsAReallyReally3LongString";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-///
-/// ```
-/// ```
-///     use cruet::cases::pascalcase::is_pascal_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_pascal_case(mock_string);
-///     assert!(asserted_bool == false);
+/// use cruet::case::is_pascal_case;
+/// 
+/// assert!(is_pascal_case("Foo"));
+/// assert!(is_pascal_case("FooBarIsAReallyReallyLongString"));
+/// assert!(is_pascal_case("FooBarIsAReallyReally3LongString"));
+/// assert!(is_pascal_case("FooBarIsAReallyReallyLongString"));
+/// 
+/// assert_ne!(is_pascal_case("foo"));
+/// assert_ne!(is_pascal_case("foo-bar-string-that-is-really-really-long"));
+/// assert_ne!(is_pascal_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert_ne!(is_pascal_case("foo_bar_string_that_is_really_really_long"));
+/// assert_ne!(is_pascal_case("Foo bar string that is really really long"));
+/// assert_ne!(is_pascal_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_pascal_case(test_string: &str) -> bool {
     to_pascal_case(test_string) == test_string

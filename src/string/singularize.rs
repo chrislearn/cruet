@@ -19,59 +19,59 @@ macro_rules! special_cases{
 /// Converts a `&str` to singularized `String`
 ///
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "foo_bars";
-///     let expected_string: String = "foo_bar".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "foo_bars";
+/// let expected_string: String = "foo_bar".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "oxen";
-///     let expected_string: String = "ox".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "oxen";
+/// let expected_string: String = "ox".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "crates";
-///     let expected_string: String = "crate".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "crates";
+/// let expected_string: String = "crate".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "oxen";
-///     let expected_string: String = "ox".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "oxen";
+/// let expected_string: String = "ox".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "boxes";
-///     let expected_string: String = "box".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "boxes";
+/// let expected_string: String = "box".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "vengeance";
-///     let expected_string: String = "vengeance".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "vengeance";
+/// let expected_string: String = "vengeance".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::singularize::to_singular;
-///     let mock_string: &str = "yoga";
-///     let expected_string: String = "yoga".to_owned();
-///     let asserted_string: String = to_singular(mock_string);
-///     assert!(asserted_string == expected_string);
+/// use cruet::string::singularize::to_singular;
+/// let mock_string: &str = "yoga";
+/// let expected_string: String = "yoga".to_owned();
+/// let asserted_string: String = to_singular(mock_string);
+/// assert!(asserted_string == expected_string);
 ///
 /// ```
 ///

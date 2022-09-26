@@ -45,59 +45,59 @@ macro_rules! special_cases{
 /// Converts a `&str` to pluralized `String`
 ///
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "foo_bars".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "foo_bar";
+/// let expected_string: String = "foo_bars".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "ox";
-///     let expected_string: String = "oxen".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "ox";
+/// let expected_string: String = "oxen".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "crate";
-///     let expected_string: String = "crates".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "crate";
+/// let expected_string: String = "crates".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "boxes";
-///     let expected_string: String = "boxes".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "boxes";
+/// let expected_string: String = "boxes".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "vengeance";
-///     let expected_string: String = "vengeance".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "vengeance";
+/// let expected_string: String = "vengeance".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "yoga";
-///     let expected_string: String = "yoga".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "yoga";
+/// let expected_string: String = "yoga".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 /// ```
-///     use cruet::string::pluralize::to_plural;
-///     let mock_string: &str = "geometry";
-///     let expected_string: String = "geometries".to_owned();
-///     let asserted_string: String = to_plural(mock_string);
-///     assert_eq!(asserted_string, expected_string);
+/// use cruet::string::pluralize::to_plural;
+/// let mock_string: &str = "geometry";
+/// let expected_string: String = "geometries".to_owned();
+/// let asserted_string: String = to_plural(mock_string);
+/// assert_eq!(asserted_string, expected_string);
 ///
 /// ```
 ///

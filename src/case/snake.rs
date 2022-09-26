@@ -2,76 +2,17 @@ use crate::case::*;
 /// Converts a `&str` to `snake_case` `String`
 ///
 /// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "foo_bar";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "HTTP Foo bar";
-///     let expected_string: String = "http_foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "HTTPFooBar";
-///     let expected_string: String = "http_foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "Foo bar";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "Foo Bar";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "FooBar";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "FOO_BAR";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "fooBar";
-///     let expected_string: String = "foo_bar".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::to_snake_case;
-///     let mock_string: &str = "fooBar3";
-///     let expected_string: String = "foo_bar_3".to_string();
-///     let asserted_string: String = to_snake_case(mock_string);
-///     assert!(asserted_string == expected_string);
-///
+/// use cruet::case::to_snake_case;
+/// 
+/// assert!(to_snake_case("foo_bar"),  "foo_bar");
+/// assert!(to_snake_case("HTTP Foo bar"),  "http_foo_bar");
+/// assert!(to_snake_case("HTTPFooBar"),  "http_foo_bar");
+/// assert!(to_snake_case("Foo bar"),  "foo_bar");
+/// assert!(to_snake_case("Foo Bar"),  "foo_bar");
+/// assert!(to_snake_case("FooBar"),  "foo_bar");
+/// assert!(to_snake_case("FOO_BAR"),  "foo_bar");
+/// assert!(to_snake_case("fooBar"),  "foo_bar");
+/// assert!(to_snake_case("fooBar3"),  "foo_bar_3");
 /// ```
 pub fn to_snake_case(non_snake_case_string: &str) -> String {
     to_case_snake_like(non_snake_case_string, "_", "lower")
@@ -80,67 +21,18 @@ pub fn to_snake_case(non_snake_case_string: &str) -> String {
 /// Determines of a `&str` is `snake_case`
 ///
 /// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "Foo bar string that is really really long";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "FooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "Foo Bar Is A Really Really Long String";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "FOO_BAR_IS_A_REALLY_REALLY_LONG_STRING";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "fooBarIsAReallyReallyLongString";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == true);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "foo_bar1_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-///     use cruet::cases::snakecase::is_snake_case;
-///     let mock_string: &str = "foo_bar_1_string_that_is_really_really_long";
-///     let asserted_bool: bool = is_snake_case(mock_string);
-///     assert!(asserted_bool == true);
-///
+/// use cruet::case::is_snake_case;
+/// 
+/// assert!(is_snake_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(is_snake_case("foo_bar1_string_that_is_really_really_long"));
+/// assert!(is_snake_case("foo_bar_1_string_that_is_really_really_long"));
+/// 
+/// assert_ne!(is_snake_case("Foo bar string that is really really long"));
+/// assert_ne!(is_snake_case("foo-bar-string-that-is-really-really-long"));
+/// assert_ne!(is_snake_case("FooBarIsAReallyReallyLongString"));
+/// assert_ne!(is_snake_case("Foo Bar Is A Really Really Long String"));
+/// assert_ne!(is_snake_case("FOO_BAR_IS_A_REALLY_REALLY_LONG_STRING"));
+/// assert_ne!(is_snake_case("fooBarIsAReallyReallyLongString"));
 /// ```
 pub fn is_snake_case(test_string: &str) -> bool {
     test_string == to_snake_case(test_string)
