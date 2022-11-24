@@ -23,8 +23,8 @@ static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
            (r"(\w*(x|ch|ss|sh|zz)es)$", ""),
            (r"(\w*(x|ch|ss|sh|zz))$", "es"),
            (r"(\w*(matr|cod|mur|sil|vert|ind|append))(?:ix|ex)$", "ices"),
-           (r"(\w*(m|l)(?:ice|ouse))$", "ice"),
-           (r"(\w*(pe)(?:rson|ople))$", "ople"),
+           (r"(\w*(m|l))(?:ice|ouse)$", "ice"),
+           (r"(\w*(pe))(?:rson|ople)$", "ople"),
            (r"(\w*(child))(?:ren)?$", "ren"),
            (r"(\w*eaux)$", "")].into_iter().map(|(rule, replace)| {(Regex::new(rule).unwrap(), replace)}).collect()
 });
@@ -168,6 +168,8 @@ mod tests {
         knife => knives;
         agendum => agenda;
         elf => elves;
-        zoology => zoology
+        zoology => zoology;
+        mice => mice;
+        people => people
     }
 }
