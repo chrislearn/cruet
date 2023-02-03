@@ -5,12 +5,12 @@ use crate::case::*;
 /// use cruet::case::is_kebab_case;
 /// 
 /// assert!(is_kebab_case("foo-bar-string-that-is-really-really-long"));
-/// assert_ne!(is_kebab_case("FooBarIsAReallyReallyLongString"));
-/// assert_ne!(is_kebab_case("fooBarIsAReallyReallyLongString"));
-/// assert_ne!(is_kebab_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
-/// assert_ne!(is_kebab_case("foo_bar_string_that_is_really_really_long"));
-/// assert_ne!(is_kebab_case("Foo bar string that is really really long"));
-/// assert_ne!(is_kebab_case("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_kebab_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_kebab_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_kebab_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_kebab_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_kebab_case("Foo bar string that is really really long"));
+/// assert!(!is_kebab_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_kebab_case(test_string: &str) -> bool {
     test_string == to_kebab_case(test_string)
@@ -56,8 +56,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_kebab_case;
-    use to_kebab_case;
+    use super::is_kebab_case;
+    use super::to_kebab_case;
 
     #[test]
     fn from_camel_case() {

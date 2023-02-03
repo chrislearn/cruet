@@ -33,20 +33,20 @@ pub fn to_class_case(non_class_case_string: &str) -> String {
 /// Determines if a `&str` is `ClassCase` `bool`
 ///
 /// ```
-/// use cruet::cases::is_class_case;
+/// use cruet::case::is_class_case;
 /// 
 /// assert!(is_class_case("Foo"));
 /// assert!(is_class_case("FooBarIsAReallyReallyLongString"));
 /// 
-/// assert_ne!(is_class_case("foo"));
-/// assert_ne!(is_class_case("FooBarIsAReallyReallyLongStrings"));
-/// assert_ne!(is_class_case("foo-bar-string-that-is-really-really-long"));
-/// assert_ne!(is_class_case("foo_bar_is_a_really_really_long_strings"));
-/// assert_ne!(is_class_case("fooBarIsAReallyReallyLongString"));
-/// assert_ne!(is_class_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
-/// assert_ne!(is_class_case("foo_bar_string_that_is_really_really_long"));
-/// assert_ne!(is_class_case("Foo bar string that is really really long"));
-/// assert_ne!(is_class_case("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_class_case("foo"));
+/// assert!(!is_class_case("FooBarIsAReallyReallyLongStrings"));
+/// assert!(!is_class_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_class_case("foo_bar_is_a_really_really_long_strings"));
+/// assert!(!is_class_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_class_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_class_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_class_case("Foo bar string that is really really long"));
+/// assert!(!is_class_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_class_case(test_string: &str) -> bool {
     to_class_case(test_string) == test_string
@@ -54,8 +54,8 @@ pub fn is_class_case(test_string: &str) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use is_class_case;
-    use to_class_case;
+    use super::is_class_case;
+    use super::to_class_case;
 
     #[test]
     fn from_camel_case() {

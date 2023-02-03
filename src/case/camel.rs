@@ -36,13 +36,13 @@ pub fn to_camel_case(non_camelized_string: &str) -> String {
 /// assert!(is_camel_case("fooBarIsAReallyReally3LongString"));
 /// assert!(is_camel_case("fooBarIsAReallyReallyLongString"));
 /// 
-/// assert_eq!(is_camel_case("Foo"));
-/// assert_eq!(is_camel_case("foo-bar-string-that-is-really-really-long"));
-/// assert_eq!(is_camel_case("FooBarIsAReallyReallyLongString"));
-/// assert_eq!(is_camel_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
-/// assert_eq!(is_camel_case("foo_bar_string_that_is_really_really_long"));
-/// assert_eq!(is_camel_case("Foo bar string that is really really long"));
-/// assert_eq!(is_camel_case("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_camel_case("Foo"));
+/// assert!(!is_camel_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_camel_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_camel_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_camel_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_camel_case("Foo bar string that is really really long"));
+/// assert!(!is_camel_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_camel_case(test_string: &str) -> bool {
     to_camel_case(test_string) == test_string
@@ -88,8 +88,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_camel_case;
-    use to_camel_case;
+    use super::is_camel_case;
+    use super::to_camel_case;
 
     #[test]
     fn from_camel_case() {

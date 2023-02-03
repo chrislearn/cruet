@@ -5,7 +5,7 @@ use crate::string::pluralize::to_plural;
 /// Converts a `&str` to `table-case` `String`
 ///
 /// ```
-/// use cruet::cases::tablecase::to_table_case;
+/// use cruet::case::table::to_table_case;
 /// 
 /// assert_eq!(to_table_case("foo-bar"), "foo_bars");
 /// assert_eq!(to_table_case("FOO_BAR"), "foo_bars");
@@ -24,51 +24,15 @@ pub fn to_table_case(non_table_case_string: &str) -> String {
 /// Determines if a `&str` is `table-case`
 ///
 /// ```
-/// let mock_string: &str = "foo_bar_strings";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == true);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "FooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "fooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo bar string that is really really long";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo Bar Is A Really Really Long String";
-/// let asserted_bool: bool = is_table_case(mock_string);
-/// assert!(asserted_bool == false);
+/// use cruet::case::table::is_table_case;
+/// assert!(is_table_case("foo_bar_strings"));
+/// assert!(!is_table_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_table_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_table_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_table_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_table_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_table_case("Foo bar string that is really really long"));
+/// assert!(!is_table_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_table_case(test_string: &str) -> bool {
     to_table_case(test_string) == test_string
@@ -94,8 +58,8 @@ mod benchmarks {
 #[cfg(test)]
 
 mod tests {
-    use is_table_case;
-    use to_table_case;
+    use super::is_table_case;
+    use super::to_table_case;
 
     #[test]
     fn from_camel_case() {

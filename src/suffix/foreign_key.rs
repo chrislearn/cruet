@@ -3,68 +3,16 @@ use crate::case::snake::to_snake_case;
 /// Converts a `&str` to a `foreign_key`
 ///
 /// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "foo_bar";
-/// let expected_string: String = "foo_bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "Foo bar";
-/// let expected_string: String = "foo_bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "Foo Bar";
-/// let expected_string: String = "foo_bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "Foo::Bar";
-/// let expected_string: String = "bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "Test::Foo::Bar";
-/// let expected_string: String = "bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "FooBar";
-/// let expected_string: String = "foo_bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "fooBar";
-/// let expected_string: String = "foo_bar_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::to_foreign_key;
-/// let mock_string: &str = "fooBar3";
-/// let expected_string: String = "foo_bar_3_id".to_owned();
-/// let asserted_string: String = to_foreign_key(mock_string);
-/// assert!(asserted_string == expected_string);
-///
+/// use cruet::suffix::foreign_key::to_foreign_key;
+/// 
+/// assert!(to_foreign_key("foo_bar") == "foo_bar_id");
+/// assert!(to_foreign_key("Foo bar") == "foo_bar_id");
+/// assert!(to_foreign_key("Foo Bar") == "foo_bar_id");
+/// assert!(to_foreign_key("Foo::Bar") == "bar_id");
+/// assert!(to_foreign_key("Test::Foo::Bar") == "bar_id");
+/// assert!(to_foreign_key("FooBar") == "foo_bar_id");
+/// assert!(to_foreign_key("fooBar") == "foo_bar_id");
+/// assert!(to_foreign_key("fooBar3") == "foo_bar_3_id");
 /// ```
 pub fn to_foreign_key(non_foreign_key_string: &str) -> String {
     if non_foreign_key_string.contains("::") {
@@ -86,53 +34,15 @@ fn safe_convert(safe_string: &str) -> String {
 /// Determines if a `&str` is a `foreign_key`
 ///
 /// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "Foo bar string that is really really long";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "FooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "Foo Bar Is A Really Really Long String";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "fooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// use cruet::suffix::foreignkey::is_foreign_key;
-/// let mock_string: &str = "foo_bar_string_that_is_really_really_long_id";
-/// let asserted_bool: bool = is_foreign_key(mock_string);
-/// assert!(asserted_bool == true);
-///
+/// use cruet::suffix::foreign_key::is_foreign_key;
+/// 
+/// assert!(!is_foreign_key("Foo bar string that is really really long"));
+/// assert!(!is_foreign_key("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_foreign_key("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_foreign_key("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_foreign_key("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_foreign_key("foo_bar_string_that_is_really_really_long"));
+/// assert!(is_foreign_key("foo_bar_string_that_is_really_really_long_id"));
 /// ```
 pub fn is_foreign_key(test_string: &str) -> bool {
     to_foreign_key(test_string) == test_string

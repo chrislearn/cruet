@@ -2,53 +2,15 @@ use crate::case::*;
 /// Determines if a `&str` is `Train-Case`
 ///
 /// ```
-/// use cruet::cases::traincase::is_train_case;
-/// let mock_string: &str = "Foo-Bar-String-That-Is-Really-Really-Long";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == true);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "FooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "fooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo bar string that is really really long";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo Bar Is A Really Really Long String";
-/// let asserted_bool: bool = is_train_case(mock_string);
-/// assert!(asserted_bool == false);
-///
+/// use cruet::case::train::is_train_case;
+/// 
+/// assert!(is_train_case("Foo-Bar-String-That-Is-Really-Really-Long"));
+/// assert!(!is_train_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_train_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_train_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_train_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_train_case("Foo bar string that is really really long"));
+/// assert!(!is_train_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_train_case(test_string: &str) -> bool {
     test_string == to_train_case(test_string)
@@ -57,59 +19,15 @@ pub fn is_train_case(test_string: &str) -> bool {
 /// Converts a `&str` to `Train-Case` `String`
 ///
 /// ```
-/// let mock_string: &str = "foo-bar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "FOO_BAR";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "foo_bar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo Bar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "Foo bar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "FooBar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-///
-/// ```
-/// let mock_string: &str = "fooBar";
-/// let expected_string: String = "Foo-Bar".to_string();
-/// let asserted_string: String = to_train_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
+/// use cruet::case::train::to_train_case;
+/// 
+/// assert!(to_train_case("foo-bar") == "Foo-Bar");
+/// assert!(to_train_case("FOO_BAR") == "Foo-Bar");
+/// assert!(to_train_case("foo_bar") == "Foo-Bar");
+/// assert!(to_train_case("Foo Bar") == "Foo-Bar");
+/// assert!(to_train_case("Foo-Bar") == "Foo-Bar");
+/// assert!(to_train_case("FooBar") == "Foo-Bar");
+/// assert!(to_train_case("fooBar") == "Foo-Bar");
 /// ```
 pub fn to_train_case(non_train_case_string: &str) -> String {
     let options = CamelOptions {
@@ -146,8 +64,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_train_case;
-    use to_train_case;
+    use super::is_train_case;
+    use super::to_train_case;
 
     #[test]
     fn from_camel_case() {

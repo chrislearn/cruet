@@ -12,10 +12,6 @@ use crate::case::*;
 /// assert_eq!(to_pascal_case("foo-bar"), "FooBar");
 /// assert_eq!(to_pascal_case("FooBar"), "FooBar");
 /// assert_eq!(to_pascal_case("FooBar3"), "FooBar3");
-/// assert_eq!(to_pascal_case(""), "FooBar");
-/// assert_eq!(to_pascal_case(""), "FooBar");
-/// assert_eq!(to_pascal_case(""), "FooBar");
-/// assert_eq!(to_pascal_case(""), "FooBar");
 /// ```
 pub fn to_pascal_case(non_pascalized_string: &str) -> String {
     let options = CamelOptions {
@@ -39,12 +35,12 @@ pub fn to_pascal_case(non_pascalized_string: &str) -> String {
 /// assert!(is_pascal_case("FooBarIsAReallyReally3LongString"));
 /// assert!(is_pascal_case("FooBarIsAReallyReallyLongString"));
 /// 
-/// assert_ne!(is_pascal_case("foo"));
-/// assert_ne!(is_pascal_case("foo-bar-string-that-is-really-really-long"));
-/// assert_ne!(is_pascal_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
-/// assert_ne!(is_pascal_case("foo_bar_string_that_is_really_really_long"));
-/// assert_ne!(is_pascal_case("Foo bar string that is really really long"));
-/// assert_ne!(is_pascal_case("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_pascal_case("foo"));
+/// assert!(!is_pascal_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_pascal_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_pascal_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_pascal_case("Foo bar string that is really really long"));
+/// assert!(!is_pascal_case("Foo Bar Is A Really Really Long String"));
 /// ```
 pub fn is_pascal_case(test_string: &str) -> bool {
     to_pascal_case(test_string) == test_string
@@ -90,8 +86,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_pascal_case;
-    use to_pascal_case;
+    use super::is_pascal_case;
+    use super::to_pascal_case;
 
     #[test]
     fn from_camel_case() {

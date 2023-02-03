@@ -4,15 +4,15 @@ use crate::case::*;
 /// ```
 /// use cruet::case::to_snake_case;
 /// 
-/// assert!(to_snake_case("foo_bar"),  "foo_bar");
-/// assert!(to_snake_case("HTTP Foo bar"),  "http_foo_bar");
-/// assert!(to_snake_case("HTTPFooBar"),  "http_foo_bar");
-/// assert!(to_snake_case("Foo bar"),  "foo_bar");
-/// assert!(to_snake_case("Foo Bar"),  "foo_bar");
-/// assert!(to_snake_case("FooBar"),  "foo_bar");
-/// assert!(to_snake_case("FOO_BAR"),  "foo_bar");
-/// assert!(to_snake_case("fooBar"),  "foo_bar");
-/// assert!(to_snake_case("fooBar3"),  "foo_bar_3");
+/// assert_eq!(to_snake_case("foo_bar"),  "foo_bar");
+/// assert_eq!(to_snake_case("HTTP Foo bar"),  "http_foo_bar");
+/// assert_eq!(to_snake_case("HTTPFooBar"),  "http_foo_bar");
+/// assert_eq!(to_snake_case("Foo bar"),  "foo_bar");
+/// assert_eq!(to_snake_case("Foo Bar"),  "foo_bar");
+/// assert_eq!(to_snake_case("FooBar"),  "foo_bar");
+/// assert_eq!(to_snake_case("FOO_BAR"),  "foo_bar");
+/// assert_eq!(to_snake_case("fooBar"),  "foo_bar");
+/// assert_eq!(to_snake_case("fooBar3"),  "foo_bar_3");
 /// ```
 pub fn to_snake_case(non_snake_case_string: &str) -> String {
     to_case_snake_like(non_snake_case_string, "_", "lower")
@@ -24,15 +24,15 @@ pub fn to_snake_case(non_snake_case_string: &str) -> String {
 /// use cruet::case::is_snake_case;
 /// 
 /// assert!(is_snake_case("foo_bar_string_that_is_really_really_long"));
-/// assert!(is_snake_case("foo_bar1_string_that_is_really_really_long"));
 /// assert!(is_snake_case("foo_bar_1_string_that_is_really_really_long"));
 /// 
-/// assert_ne!(is_snake_case("Foo bar string that is really really long"));
-/// assert_ne!(is_snake_case("foo-bar-string-that-is-really-really-long"));
-/// assert_ne!(is_snake_case("FooBarIsAReallyReallyLongString"));
-/// assert_ne!(is_snake_case("Foo Bar Is A Really Really Long String"));
-/// assert_ne!(is_snake_case("FOO_BAR_IS_A_REALLY_REALLY_LONG_STRING"));
-/// assert_ne!(is_snake_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_snake_case("foo_bar1_string_that_is_really_really_long"));
+/// assert!(!is_snake_case("Foo bar string that is really really long"));
+/// assert!(!is_snake_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_snake_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_snake_case("Foo Bar Is A Really Really Long String"));
+/// assert!(!is_snake_case("FOO_BAR_IS_A_REALLY_REALLY_LONG_STRING"));
+/// assert!(!is_snake_case("fooBarIsAReallyReallyLongString"));
 /// ```
 pub fn is_snake_case(test_string: &str) -> bool {
     test_string == to_snake_case(test_string)
@@ -66,8 +66,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_snake_case;
-    use to_snake_case;
+    use super::is_snake_case;
+    use super::to_snake_case;
 
     #[test]
     fn from_camel_case() {

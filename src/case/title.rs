@@ -2,47 +2,14 @@ use crate::case::*;
 /// Converts a `&str` to `Title Case` `String`
 ///
 /// ```
-/// use cruet::cases::titlecase::to_title_case;
-/// let mock_string: &str = "Foo bar";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "FooBar";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "fooBar";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "FOO_BAR";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "foo_bar";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "foo-bar";
-/// let expected_string: String = "Foo Bar".to_string();
-/// let asserted_string: String = to_title_case(mock_string);
-/// assert!(asserted_string == expected_string);
-///
+/// use cruet::case::title::to_title_case;
+/// 
+/// assert!(to_title_case("Foo bar") == "Foo Bar");
+/// assert!(to_title_case("FooBar") == "Foo Bar");
+/// assert!(to_title_case("fooBar") == "Foo Bar");
+/// assert!(to_title_case("FOO_BAR") == "Foo Bar");
+/// assert!(to_title_case("foo_bar") == "Foo Bar");
+/// assert!(to_title_case("foo-bar") == "Foo Bar");
 /// ```
 pub fn to_title_case(non_title_case_string: &str) -> String {
     let options = CamelOptions {
@@ -59,52 +26,16 @@ pub fn to_title_case(non_title_case_string: &str) -> String {
 /// Determines if a `&str` is `Title Case`
 ///
 /// ```
-/// let mock_string: &str = "foo-bar-string-that-is-really-really-long";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "FooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "fooBarIsAReallyReallyLongString";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "foo_bar_string_that_is_really_really_long";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "Foo bar string that is really really long";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "foo";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == false);
-///
-/// ```
-/// ```
-/// let mock_string: &str = "Foo Bar String That Is Really Really Long";
-/// let asserted_bool: bool = is_title_case(mock_string);
-/// assert!(asserted_bool == true);
-///
+/// use cruet::case::title::is_title_case;
+/// 
+/// assert!(is_title_case("Foo Bar String That Is Really Really Long"));
+/// assert!(!is_title_case("foo-bar-string-that-is-really-really-long"));
+/// assert!(!is_title_case("FooBarIsAReallyReallyLongString"));
+/// assert!(!is_title_case("fooBarIsAReallyReallyLongString"));
+/// assert!(!is_title_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));
+/// assert!(!is_title_case("foo_bar_string_that_is_really_really_long"));
+/// assert!(!is_title_case("Foo bar string that is really really long"));
+/// assert!(!is_title_case("foo"));
 /// ```
 pub fn is_title_case(test_string: &str) -> bool {
     test_string == to_title_case(test_string)
@@ -133,8 +64,8 @@ mod benchmarks {
 
 #[cfg(test)]
 mod tests {
-    use is_title_case;
-    use to_title_case;
+    use super::is_title_case;
+    use super::to_title_case;
 
     #[test]
     fn from_camel_case() {
