@@ -109,35 +109,35 @@ pub fn to_singular(non_singular_string: &str) -> String {
 static RULES: Lazy<Vec<(Regex, &'static str)>> = Lazy::new(|| {
     vec![
         (r"(\w*)s$", ""),
-        (r"(\w*)(ss)$", "$2"),
-        (r"(n)ews$", "ews"),
-        (r"(\w*)(o)es$", ""),
-        (r"(\w*)([ti])a$", "um"),
+        (r"(\w*(ss))$", ""),
+        (r"(\w*(n))ews$", "ews"),
+        (r"(\w*(o))es$", ""),
+        (r"(\w*([ti]))a$", "um"),
         (
-            r"((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)(sis|ses)$",
+            r"(\w*((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he))(sis|ses)$",
             "sis",
         ),
         (r"(^analy)(sis|ses)$", "sis"),
-        (r"(\w*)([^f])ves$", "fe"),
-        (r"(\w*)(hive)s$", ""),
-        (r"(\w*)(tive)s$", ""),
-        (r"(\w*)([lr])ves$", "f"),
+        (r"(\w*([^f]))ves$", "fe"),
+        (r"(\w*(hive))s$", ""),
+        (r"(\w*(tive))s$", ""),
+        (r"(\w*([lr]))ves$", "f"),
         (r"(\w*([^aeiouy]|qu))ies$", "y"),
-        (r"(s)eries$", "eries"),
-        (r"(m)ovies$", "ovie"),
-        (r"(\w*)(x|ch|ss|sh)es$", "$2"),
-        (r"(m|l)ice$", "ouse"),
-        (r"(bus)(es)?$", ""),
-        (r"(shoe)s$", ""),
-        (r"(cris|test)(is|es)$", "is"),
+        (r"(\w*(s))eries$", "eries"),
+        (r"(\w*(m))ovies$", "ovie"),
+        (r"(\w*(x|ch|ss|sh))es$", ""),
+        (r"(\w*(m|l))ice$", "ouse"),
+        (r"(\w*(bus))(es)?$", ""),
+        (r"(\w*(shoe))s$", ""),
+        (r"(\w*(cris|test))(is|es)$", "is"),
         (r"^(a)x[ie]s$", "xis"),
-        (r"(octop|vir)(us|i)$", "us"),
-        (r"(alias|status)(es)?$", ""),
+        (r"(\w*(octop|vir))(us|i)$", "us"),
+        (r"(\w*(alias|status))(es)?$", ""),
         (r"^(ox)en", ""),
-        (r"(vert|ind)ices$", "ex"),
-        (r"(matr)ices$", "ix"),
-        (r"(quiz)zes$", ""),
-        (r"(database)s$", ""),
+        (r"(\w*(vert|ind))ices$", "ex"),
+        (r"(\w*(matr))ices$", "ix"),
+        (r"(\w*(quiz))zes$", ""),
+        (r"(\w*(database))s$", ""),
     ]
     .into_iter()
     .map(|(rule, replace)| (Regex::new(rule).unwrap(), replace))
@@ -162,9 +162,43 @@ fn singularize_ss_suffix() {
 
 #[test]
 fn singularize_string_if_a_regex_will_match() {
-    let expected_string: String = "ox".to_owned();
-    let asserted_string: String = to_singular("oxen");
-    assert!(expected_string == asserted_string);
+    assert_eq!("news", to_singular("news"));
+    assert_eq!("goodnews", to_singular("goodnews"));
+    assert_eq!("potato", to_singular("potatoes"));
+    assert_eq!("datum", to_singular("data"));
+    assert_eq!("analysis", to_singular("analyses"));
+    assert_eq!("codebasis", to_singular("codebases"));
+    assert_eq!("diagnosis", to_singular("diagnoses"));
+    assert_eq!("parenthesis", to_singular("parentheses"));
+    assert_eq!("prognosis", to_singular("prognoses"));
+    assert_eq!("synopsis", to_singular("synopses"));
+    assert_eq!("thesis", to_singular("theses"));
+    assert_eq!("knife", to_singular("knives"));
+    assert_eq!("archive", to_singular("archives"));
+    assert_eq!("motive", to_singular("motives"));
+    assert_eq!("half", to_singular("halves"));
+    assert_eq!("wolf", to_singular("wolves"));
+    assert_eq!("calf", to_singular("calves"));
+    assert_eq!("shelf", to_singular("shelves"));
+    assert_eq!("series", to_singular("series"));
+    assert_eq!("movie", to_singular("movies"));
+    assert_eq!("bus", to_singular("buses"));
+    assert_eq!("wish", to_singular("wishes"));
+    assert_eq!("pitch", to_singular("pitches"));
+    assert_eq!("box", to_singular("boxes"));
+    assert_eq!("mouse", to_singular("mice"));
+    assert_eq!("minibus", to_singular("minibuses"));
+    assert_eq!("snowshoe", to_singular("snowshoes"));
+    assert_eq!("crisis", to_singular("crises"));
+    assert_eq!("ovotestis", to_singular("ovotestes"));
+    assert_eq!("axis", to_singular("axes"));
+    assert_eq!("octopus", to_singular("octopi"));
+    assert_eq!("alias", to_singular("aliases"));
+    assert_eq!("ox", to_singular("oxen"));
+    assert_eq!("index", to_singular("indices"));
+    assert_eq!("matrix", to_singular("matrices"));
+    assert_eq!("quiz", to_singular("quizzes"));
+    assert_eq!("database", to_singular("databases"));
 }
 
 #[test]
