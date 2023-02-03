@@ -38,14 +38,10 @@ cruet = "*"
 ## Usage / Example:
 
 ```rust
-...
 // to use methods like String.to_lower_case();
 use cruet::Inflector;
-...
 fn main() {
-...
   let camel_case_string: String = "some_string".to_camel_case();
-...
 }
 
 ```
@@ -53,7 +49,6 @@ fn main() {
 Or
 
 ```rust
-...
 // to use methods like to_snake_case(&str);
 use cruet;
 
@@ -98,13 +93,9 @@ use cruet;
 
 // use cruet::to_plural;
 // use cruet::to_singular;
-...
 fn main() {
-...
   let camel_case_string: String = to_camel_case("some_string");
-...
 }
-
 ```
 
 ## [Contributing](CONTRIBUTING.md)
