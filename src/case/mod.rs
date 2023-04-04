@@ -78,6 +78,7 @@ pub struct CamelOptions {
     pub injectable_char: char,
     pub has_seperator: bool,
     pub inverted: bool,
+    pub concat_num: bool,
 }
 
 #[doc(hidden)]
