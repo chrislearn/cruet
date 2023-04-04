@@ -114,7 +114,7 @@ pub fn to_case_camel_like(convertable_string: &str, camel_options: CamelOptions)
             new_word = true;
         } else if !found_real_char && is_not_alphanumeric(character) {
             continue;
-        } else if character.is_numeric() {
+        } else if character.is_numeric() && camel_options.concat_num {
             found_real_char = true;
             new_word = true;
             result.push(character);
