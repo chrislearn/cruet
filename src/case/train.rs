@@ -37,7 +37,7 @@ pub fn to_train_case(non_train_case_string: &str) -> String {
         injectable_char: '-',
         has_seperator: true,
         inverted: false,
-        concat_num: false,
+        concat_num: true,
     };
     to_case_camel_like(non_train_case_string, options)
 }
