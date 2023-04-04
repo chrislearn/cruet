@@ -3,7 +3,7 @@ use crate::case::*;
 ///
 /// ```
 /// use cruet::case::to_pascal_case;
-/// 
+///
 /// assert_eq!(to_pascal_case("fooBar"), "FooBar");
 /// assert_eq!(to_pascal_case("FOO_BAR"), "FooBar");
 /// assert_eq!(to_pascal_case("Foo Bar"), "FooBar");
@@ -21,6 +21,7 @@ pub fn to_pascal_case(non_pascalized_string: &str) -> String {
         injectable_char: ' ',
         has_seperator: false,
         inverted: false,
+        concat_num: true,
     };
     to_case_camel_like(non_pascalized_string, options)
 }
@@ -29,12 +30,12 @@ pub fn to_pascal_case(non_pascalized_string: &str) -> String {
 ///
 /// ```
 /// use cruet::case::is_pascal_case;
-/// 
+///
 /// assert!(is_pascal_case("Foo"));
 /// assert!(is_pascal_case("FooBarIsAReallyReallyLongString"));
 /// assert!(is_pascal_case("FooBarIsAReallyReally3LongString"));
 /// assert!(is_pascal_case("FooBarIsAReallyReallyLongString"));
-/// 
+///
 /// assert!(!is_pascal_case("foo"));
 /// assert!(!is_pascal_case("foo-bar-string-that-is-really-really-long"));
 /// assert!(!is_pascal_case("FOO_BAR_STRING_THAT_IS_REALLY_REALLY_LONG"));

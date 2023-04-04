@@ -3,7 +3,7 @@ use crate::case::*;
 ///
 /// ```
 /// use cruet::case::to_sentence_case;
-/// 
+///
 /// assert_eq!(to_sentence_case("Foo bar"), "Foo bar");
 /// assert_eq!(to_sentence_case("FooBar"), "Foo bar");
 /// assert_eq!(to_sentence_case("fooBar"), "Foo bar");
@@ -19,6 +19,7 @@ pub fn to_sentence_case(non_sentence_case_string: &str) -> String {
         injectable_char: ' ',
         has_seperator: true,
         inverted: true,
+        concat_num: false,
     };
     to_case_camel_like(non_sentence_case_string, options)
 }
@@ -26,10 +27,10 @@ pub fn to_sentence_case(non_sentence_case_string: &str) -> String {
 ///
 /// ```
 /// use cruet::case::is_sentence_case;
-/// 
+///
 /// assert!(is_sentence_case("Foo"));
 /// assert!(is_sentence_case("Foo bar string that is really really long"));
-/// 
+///
 /// assert!(!is_sentence_case("foo-bar-string-that-is-really-really-long"));
 /// assert!(!is_sentence_case("FooBarIsAReallyReallyLongString"));
 /// assert!(!is_sentence_case("fooBarIsAReallyReallyLongString"));
