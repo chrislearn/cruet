@@ -2,7 +2,7 @@
 ///
 /// ```
 /// use cruet::number::deordinalize::deordinalize;
-/// 
+///
 /// assert!(deordinalize("0.1") == "0.1");
 /// assert!(deordinalize("-1st") == "-1");
 /// assert!(deordinalize("0th") == "0");

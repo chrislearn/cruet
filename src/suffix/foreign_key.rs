@@ -4,7 +4,7 @@ use crate::case::snake::to_snake_case;
 ///
 /// ```
 /// use cruet::suffix::foreign_key::to_foreign_key;
-/// 
+///
 /// assert!(to_foreign_key("foo_bar") == "foo_bar_id");
 /// assert!(to_foreign_key("Foo bar") == "foo_bar_id");
 /// assert!(to_foreign_key("Foo Bar") == "foo_bar_id");
@@ -35,7 +35,7 @@ fn safe_convert(safe_string: &str) -> String {
 ///
 /// ```
 /// use cruet::suffix::foreign_key::is_foreign_key;
-/// 
+///
 /// assert!(!is_foreign_key("Foo bar string that is really really long"));
 /// assert!(!is_foreign_key("foo-bar-string-that-is-really-really-long"));
 /// assert!(!is_foreign_key("FooBarIsAReallyReallyLongString"));

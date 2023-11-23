@@ -6,7 +6,7 @@ use crate::string::pluralize::to_plural;
 ///
 /// ```
 /// use cruet::case::table::to_table_case;
-/// 
+///
 /// assert_eq!(to_table_case("foo-bar"), "foo_bars");
 /// assert_eq!(to_table_case("FOO_BAR"), "foo_bars");
 /// assert_eq!(to_table_case("foo_bar"), "foo_bars");

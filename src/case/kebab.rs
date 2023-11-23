@@ -3,7 +3,7 @@ use crate::case::*;
 ///
 /// ```
 /// use cruet::case::is_kebab_case;
-/// 
+///
 /// assert!(is_kebab_case("foo-bar-string-that-is-really-really-long"));
 /// assert!(!is_kebab_case("FooBarIsAReallyReallyLongString"));
 /// assert!(!is_kebab_case("fooBarIsAReallyReallyLongString"));
@@ -20,7 +20,7 @@ pub fn is_kebab_case(test_string: &str) -> bool {
 ///
 /// ```
 /// use cruet::case::to_kebab_case;
-/// 
+///
 /// assert_eq!(to_kebab_case("foo-bar"), "foo-bar");
 /// assert_eq!(to_kebab_case("FOO_BAR"), "foo-bar");
 /// assert_eq!(to_kebab_case("foo_bar"), "foo-bar");

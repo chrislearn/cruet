@@ -3,7 +3,7 @@ use crate::case::*;
 ///
 /// ```
 /// use cruet::case::to_snake_case;
-/// 
+///
 /// assert_eq!(to_snake_case("foo_bar"),  "foo_bar");
 /// assert_eq!(to_snake_case("HTTP Foo bar"),  "http_foo_bar");
 /// assert_eq!(to_snake_case("HTTPFooBar"),  "http_foo_bar");
@@ -22,10 +22,10 @@ pub fn to_snake_case(non_snake_case_string: &str) -> String {
 ///
 /// ```
 /// use cruet::case::is_snake_case;
-/// 
+///
 /// assert!(is_snake_case("foo_bar_string_that_is_really_really_long"));
 /// assert!(is_snake_case("foo_bar_1_string_that_is_really_really_long"));
-/// 
+///
 /// assert!(!is_snake_case("foo_bar1_string_that_is_really_really_long"));
 /// assert!(!is_snake_case("Foo bar string that is really really long"));
 /// assert!(!is_snake_case("foo-bar-string-that-is-really-really-long"));
