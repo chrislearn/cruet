@@ -3,7 +3,7 @@ use crate::case::*;
 ///
 /// ```
 /// use cruet::case::train::is_train_case;
-/// 
+///
 /// assert!(is_train_case("Foo-Bar-String-That-Is-Really-Really-Long"));
 /// assert!(!is_train_case("foo-bar-string-that-is-really-really-long"));
 /// assert!(!is_train_case("FooBarIsAReallyReallyLongString"));
@@ -20,7 +20,7 @@ pub fn is_train_case(test_string: &str) -> bool {
 ///
 /// ```
 /// use cruet::case::train::to_train_case;
-/// 
+///
 /// assert!(to_train_case("foo-bar") == "Foo-Bar");
 /// assert!(to_train_case("FOO_BAR") == "Foo-Bar");
 /// assert!(to_train_case("foo_bar") == "Foo-Bar");
@@ -37,6 +37,7 @@ pub fn to_train_case(non_train_case_string: &str) -> String {
         injectable_char: '-',
         has_seperator: true,
         inverted: false,
+        concat_num: true,
     };
     to_case_camel_like(non_train_case_string, options)
 }

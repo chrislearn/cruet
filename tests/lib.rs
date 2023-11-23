@@ -63,6 +63,7 @@ macro_rules! gated_string_tests {
 
 str_tests![
     str_to_camel => to_camel_case => "foo_bar" => "fooBar".to_string(),
+    str_to_camel_num => to_camel_case => "foo_bar_1" => "fooBar1".to_string(),
     str_is_camel => is_camel_case => "fooBar" => true,
     str_is_not_camel => is_camel_case => "foo_bar" => false,
     str_to_screaming_snake => to_screaming_snake_case => "fooBar" => "FOO_BAR".to_string(),
@@ -78,9 +79,11 @@ str_tests![
     str_is_train => is_train_case => "Foo-Bar" => true,
     str_is_not_train => is_train_case => "FOO-Bar" => false,
     str_to_sentence => to_sentence_case => "fooBar" => "Foo bar".to_string(),
+    str_to_sentence_with_num => to_sentence_case => "foo 1 bar 2" => "Foo 1 bar 2".to_string(),
     str_is_sentence => is_sentence_case => "Foo bar" => true,
     str_is_not_sentence => is_sentence_case => "foo_bar" => false,
     str_to_title => to_title_case => "fooBar" => "Foo Bar".to_string(),
+    str_to_title_with_num => to_title_case => "foo 1 bar 2" => "Foo 1 Bar 2".to_string(),
     str_is_title => is_title_case => "Foo Bar" => true,
     str_is_not_title => is_title_case => "Foo_Bar" => false,
     str_ordinalize  => ordinalize => "1" => "1st".to_string(),
@@ -105,6 +108,7 @@ gated_str_tests![
 
 string_tests![
     string_to_camel => to_camel_case => "foo_bar".to_string() => "fooBar".to_string(),
+    string_to_camel_num => to_camel_case => "foo_bar_1".to_string() => "fooBar1".to_string(),
     string_is_camel => is_camel_case => "fooBar".to_string() => true,
     string_is_not_camel => is_camel_case => "foo_bar".to_string() => false,
     string_to_screaming_snake => to_screaming_snake_case => "fooBar".to_string() => "FOO_BAR".to_string(),
@@ -120,9 +124,11 @@ string_tests![
     string_is_train => is_train_case => "Foo-Bar".to_string() => true,
     string_is_not_train => is_train_case => "foo-Bar".to_string() => false,
     string_to_sentence => to_sentence_case => "fooBar".to_string() => "Foo bar".to_string(),
+    string_to_sentence_with_num => to_sentence_case => "foo 1 bar 2".to_string() => "Foo 1 bar 2".to_string(),
     string_is_sentence => is_sentence_case => "Foo bar".to_string() => true,
     string_is_not_sentence => is_sentence_case => "fooBar".to_string() => false,
     string_to_title => to_title_case => "fooBar".to_string() => "Foo Bar".to_string(),
+    string_tot_title_with_num => to_title_case => "foo 1 bar 2".to_string() => "Foo 1 Bar 2".to_string(),
     string_is_title => is_title_case => "Foo Bar".to_string() => true,
     string_is_not_title => is_title_case => "fooBar".to_string() => false,
     string_ordinalize  => ordinalize => "1".to_string() => "1st".to_string(),
