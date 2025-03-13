@@ -1,9 +1,4 @@
-#![deny(
-    unused_variables,
-    missing_docs,
-    unsafe_code,
-    unused_extern_crates
-)]
+#![deny(unused_variables, missing_docs, unsafe_code, unused_extern_crates)]
 
 //! Adds String based inflections for Rust. Snake, kebab, train, camel,
 //! sentence, class, and title cases as well as ordinalize,
