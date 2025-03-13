@@ -38,7 +38,7 @@ pub fn is_snake_case(test_string: &str) -> bool {
     test_string == to_snake_case(test_string)
 }
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;

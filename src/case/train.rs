@@ -42,7 +42,7 @@ pub fn to_train_case(non_train_case_string: &str) -> String {
     to_case_camel_like(non_train_case_string, options)
 }
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;

@@ -38,7 +38,7 @@ pub fn is_table_case(test_string: &str) -> bool {
     to_table_case(test_string) == test_string
 }
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 
 mod benchmarks {
     extern crate test;

@@ -1,11 +1,9 @@
 #![deny(
-    warnings,
     unused_variables,
     missing_docs,
     unsafe_code,
     unused_extern_crates
 )]
-#![cfg_attr(feature = "unstable", feature(test))]
 
 //! Adds String based inflections for Rust. Snake, kebab, train, camel,
 //! sentence, class, and title cases as well as ordinalize,
@@ -235,7 +233,7 @@ implement_number_for![
     i8, i16, i32, i64, u8, u16, u32, u64, isize, usize, f32, f64
 ];
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;
