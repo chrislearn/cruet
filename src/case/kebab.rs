@@ -33,7 +33,7 @@ pub fn to_kebab_case(non_kebab_case_string: &str) -> String {
     to_case_snake_like(non_kebab_case_string, "-", "lower")
 }
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;

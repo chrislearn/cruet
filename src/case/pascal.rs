@@ -47,7 +47,7 @@ pub fn is_pascal_case(test_string: &str) -> bool {
     to_pascal_case(test_string) == test_string
 }
 
-#[cfg(all(feature = "unstable", test))]
+#[cfg(test)]
 mod benchmarks {
     extern crate test;
     use self::test::Bencher;
