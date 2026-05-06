@@ -3,11 +3,13 @@ on:
     branches:
       - '*'
       - '!release'
+  pull_request:
 
-name: format
+name: ci
 
 jobs:
   format:
+    name: rustfmt
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,3 +17,32 @@ jobs:
         with:
           components: rustfmt
       - run: cargo fmt --all --check
+
+  test:
+    name: cargo test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test --all-targets
+      - run: cargo test --doc
+
+  clippy:
+    name: cargo clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      # Library code is held to -D warnings. Tests/benches still have legacy
+      # `assert_eq!(x, true)` style and manual char-comparison patterns; those
+      # will be cleaned up in a follow-up that also tightens this step.
+      - run: cargo clippy --lib -- -D warnings
+      - run: cargo clippy --all-targets
