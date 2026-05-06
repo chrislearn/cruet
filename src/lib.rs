@@ -130,18 +130,6 @@ macro_rules! define_number_implementations {
     }
 }
 
-macro_rules! define_gated_implementations {
-    ( $slf:ident; $($imp_trait:ident => $typ:ident), *) => {
-        $(
-            #[inline]
-
-            fn $imp_trait(&$slf) -> $typ {
-                $imp_trait($slf)
-            }
-        )*
-    }
-}
-
 macro_rules! implement_string_for {
     ( $trt:ident; $($typ:ident), *) => {
         $(
@@ -166,9 +154,7 @@ macro_rules! implement_string_for {
                     to_foreign_key => String,
                     is_foreign_key => bool,
                     ordinalize => String,
-                    deordinalize => String
-                ];
-                define_gated_implementations![self;
+                    deordinalize => String,
                     to_class_case => String,
                     is_class_case => bool,
                     to_table_case => String,

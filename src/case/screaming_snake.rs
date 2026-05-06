@@ -110,48 +110,48 @@ mod tests {
     #[test]
     fn is_correct_from_camel_case() {
         let convertible_string: String = "fooBar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_pascal_case() {
         let convertible_string: String = "FooBar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_kebab_case() {
         let convertible_string: String = "foo-bar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_sentence_case() {
         let convertible_string: String = "Foo bar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_title_case() {
         let convertible_string: String = "Foo Bar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_train_case() {
         let convertible_string: String = "Foo-Bar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_screaming_screaming_snake_case() {
         let convertible_string: String = "FOO_BAR".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), true)
+        assert!(is_screaming_snake_case(&convertible_string))
     }
 
     #[test]
     fn is_correct_from_snake_case() {
         let convertible_string: String = "foo_bar".to_owned();
-        assert_eq!(is_screaming_snake_case(&convertible_string), false)
+        assert!(!is_screaming_snake_case(&convertible_string))
     }
 }
