@@ -29,8 +29,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
-      - run: cargo test --all-targets --locked
-      - run: cargo test --doc --locked
+      - run: cargo test --all-targets
+      - run: cargo test --doc
 
   clippy:
     name: cargo clippy
@@ -44,5 +44,5 @@ jobs:
       # Library code is held to -D warnings. Tests/benches still have legacy
       # `assert_eq!(x, true)` style and manual char-comparison patterns; those
       # will be cleaned up in a follow-up that also tightens this step.
-      - run: cargo clippy --lib --locked -- -D warnings
-      - run: cargo clippy --all-targets --locked
+      - run: cargo clippy --lib -- -D warnings
+      - run: cargo clippy --all-targets
