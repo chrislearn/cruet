@@ -56,16 +56,25 @@ use crate::string::constants::UNCOUNTABLE_WORDS;
 /// assert!(asserted_string == expected_string);
 /// ```
 pub fn to_singular(non_singular_string: &str) -> String {
-    // Find the last separator (hyphen or underscore) to preserve prefixes
-    if let Some(pos) = non_singular_string.rfind(|c| c == '-' || c == '_') {
+    // Find the last separator (hyphen or underscore) to preserve prefixes.
+    // Done iteratively rather than recursively so that pathological inputs
+    // (e.g. millions of separators) cannot blow the stack.
+    if let Some(pos) = non_singular_string.rfind(['-', '_']) {
         let prefix = &non_singular_string[..=pos]; // includes the separator
         let last_word = &non_singular_string[pos + 1..];
         if last_word.is_empty() {
             return non_singular_string.to_owned();
         }
-        return format!("{}{}", prefix, to_singular(last_word));
+        let singularized = singularize_word(last_word);
+        let mut out = String::with_capacity(prefix.len() + singularized.len());
+        out.push_str(prefix);
+        out.push_str(&singularized);
+        return out;
     }
+    singularize_word(non_singular_string)
+}
 
+fn singularize_word(non_singular_string: &str) -> String {
     if UNCOUNTABLE_WORDS.contains(non_singular_string) {
         non_singular_string.to_owned()
     } else {
@@ -121,7 +130,7 @@ static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
         (r"^(a)x[ie]s$", "xis"),
         (r"(\w*(octop|vir))(us|i)$", "us"),
         (r"(\w*(alias|status))(es)?$", ""),
-        (r"^(ox)en", ""),
+        (r"^(ox)en$", ""),
         (r"(\w*(vert|ind))ices$", "ex"),
         (r"(\w*(matr))ices$", "ix"),
         (r"(\w*(quiz))zes$", ""),

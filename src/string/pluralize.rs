@@ -83,16 +83,25 @@ static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
 /// assert_eq!(asserted_string, expected_string);
 /// ```
 pub fn to_plural(non_plural_string: &str) -> String {
-    // Find the last separator (hyphen or underscore) to preserve prefixes
-    if let Some(pos) = non_plural_string.rfind(|c| c == '-' || c == '_') {
+    // Find the last separator (hyphen or underscore) to preserve prefixes.
+    // Done iteratively rather than recursively so that pathological inputs
+    // (e.g. millions of separators) cannot blow the stack.
+    if let Some(pos) = non_plural_string.rfind(['-', '_']) {
         let prefix = &non_plural_string[..=pos]; // includes the separator
         let last_word = &non_plural_string[pos + 1..];
         if last_word.is_empty() {
             return non_plural_string.to_owned();
         }
-        return format!("{}{}", prefix, to_plural(last_word));
+        let pluralized = pluralize_word(last_word);
+        let mut out = String::with_capacity(prefix.len() + pluralized.len());
+        out.push_str(prefix);
+        out.push_str(&pluralized);
+        return out;
     }
+    pluralize_word(non_plural_string)
+}
 
+fn pluralize_word(non_plural_string: &str) -> String {
     if UNCOUNTABLE_WORDS.contains(non_plural_string) {
         non_plural_string.to_owned()
     } else {
