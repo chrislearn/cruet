@@ -66,7 +66,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
         return format!("{}{}", prefix, to_singular(last_word));
     }
 
-    if UNCOUNTABLE_WORDS.contains(&non_singular_string) {
+    if UNCOUNTABLE_WORDS.contains(non_singular_string) {
         non_singular_string.to_owned()
     } else {
         special_cases![non_singular_string,

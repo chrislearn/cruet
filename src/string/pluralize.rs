@@ -93,7 +93,7 @@ pub fn to_plural(non_plural_string: &str) -> String {
         return format!("{}{}", prefix, to_plural(last_word));
     }
 
-    if UNCOUNTABLE_WORDS.contains(&non_plural_string) {
+    if UNCOUNTABLE_WORDS.contains(non_plural_string) {
         non_plural_string.to_owned()
     } else {
         special_cases![non_plural_string,

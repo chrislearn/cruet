@@ -1,4 +1,12 @@
-pub const UNCOUNTABLE_WORDS: [&str; 202] = [
+use std::collections::HashSet;
+use std::sync::LazyLock;
+
+/// Words that have the same singular and plural form. Looked up via the
+/// `UNCOUNTABLE_WORDS` set for O(1) checks during pluralize/singularize.
+pub static UNCOUNTABLE_WORDS: LazyLock<HashSet<&'static str>> =
+    LazyLock::new(|| UNCOUNTABLE_WORDS_LIST.iter().copied().collect());
+
+const UNCOUNTABLE_WORDS_LIST: [&str; 202] = [
     "accommodation",
     "adulthood",
     "advertising",

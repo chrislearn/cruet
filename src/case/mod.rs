@@ -73,24 +73,38 @@ pub struct CamelOptions {
 
 #[doc(hidden)]
 pub fn to_case_snake_like(convertible_string: &str, replace_with: &str, case: &str) -> String {
+    // Resolve the separator char and casing once, instead of re-parsing the
+    // `&str` parameters on every iteration of the inner loop.
+    let separator_char: char = replace_with.chars().next().unwrap_or('_');
+    let to_upper: bool = case != "lower";
     let mut first_character: bool = true;
-    let mut result: String = String::with_capacity(convertible_string.len() * 2);
+    let mut result: String = String::with_capacity(convertible_string.len() + 4);
     let chars: Vec<char> = trim_right(convertible_string).chars().collect();
     for (index, &current_char) in chars.iter().enumerate() {
         if char_is_separator(&current_char) {
             if !first_character {
                 first_character = true;
-                result.push(replace_with.chars().next().unwrap_or('_'));
+                result.push(separator_char);
             }
         } else if requires_separator(current_char, index, first_character, &chars) {
             first_character = false;
-            result = snake_like_with_separator(result, replace_with, &current_char, case)
+            result.push(separator_char);
+            push_cased(&mut result, current_char, to_upper);
         } else {
             first_character = false;
-            result = snake_like_no_separator(result, &current_char, case)
+            push_cased(&mut result, current_char, to_upper);
         }
     }
     result
+}
+
+#[inline]
+fn push_cased(result: &mut String, c: char, to_upper: bool) {
+    if to_upper {
+        result.push(c.to_ascii_uppercase());
+    } else {
+        result.push(c.to_ascii_lowercase());
+    }
 }
 
 #[doc(hidden)]
@@ -181,35 +195,6 @@ fn requires_separator(
         && next_or_previous_char_is_lowercase(chars, index)
 }
 
-#[inline]
-fn snake_like_no_separator(mut accumulator: String, current_char: &char, case: &str) -> String {
-    if case == "lower" {
-        accumulator.push(current_char.to_ascii_lowercase());
-        accumulator
-    } else {
-        accumulator.push(current_char.to_ascii_uppercase());
-        accumulator
-    }
-}
-
-#[inline]
-fn snake_like_with_separator(
-    mut accumulator: String,
-    replace_with: &str,
-    current_char: &char,
-    case: &str,
-) -> String {
-    if case == "lower" {
-        accumulator.push(replace_with.chars().next().unwrap_or('_'));
-        accumulator.push(current_char.to_ascii_lowercase());
-        accumulator
-    } else {
-        accumulator.push(replace_with.chars().next().unwrap_or('_'));
-        accumulator.push(current_char.to_ascii_uppercase());
-        accumulator
-    }
-}
-
 fn next_or_previous_char_is_lowercase(chars: &[char], index: usize) -> bool {
     chars.get(index + 1).copied().unwrap_or('A').is_lowercase()
         || index
@@ -264,38 +249,6 @@ fn test_next_or_previous_char_is_lowercase_true() {
 fn test_next_or_previous_char_is_lowercase_false() {
     let chars: Vec<char> = "TestWWW".chars().collect();
     assert_eq!(next_or_previous_char_is_lowercase(&chars, 5), false)
-}
-
-#[test]
-fn snake_like_with_separator_lowers() {
-    assert_eq!(
-        snake_like_with_separator("".to_owned(), "^", &'c', "lower"),
-        "^c".to_string()
-    )
-}
-
-#[test]
-fn snake_like_with_separator_upper() {
-    assert_eq!(
-        snake_like_with_separator("".to_owned(), "^", &'c', "upper"),
-        "^C".to_string()
-    )
-}
-
-#[test]
-fn snake_like_no_separator_lower() {
-    assert_eq!(
-        snake_like_no_separator("".to_owned(), &'C', "lower"),
-        "c".to_string()
-    )
-}
-
-#[test]
-fn snake_like_no_separator_upper() {
-    assert_eq!(
-        snake_like_no_separator("".to_owned(), &'c', "upper"),
-        "C".to_string()
-    )
 }
 
 #[test]
