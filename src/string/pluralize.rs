@@ -84,7 +84,7 @@ static RULES: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
 /// ```
 pub fn to_plural(non_plural_string: &str) -> String {
     // Find the last separator (hyphen or underscore) to preserve prefixes
-    if let Some(pos) = non_plural_string.rfind(|c| c == '-' || c == '_') {
+    if let Some(pos) = non_plural_string.rfind(['-', '_']) {
         let prefix = &non_plural_string[..=pos]; // includes the separator
         let last_word = &non_plural_string[pos + 1..];
         if last_word.is_empty() {
