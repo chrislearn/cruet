@@ -57,7 +57,7 @@ use crate::string::constants::UNCOUNTABLE_WORDS;
 /// ```
 pub fn to_singular(non_singular_string: &str) -> String {
     // Find the last separator (hyphen or underscore) to preserve prefixes
-    if let Some(pos) = non_singular_string.rfind(|c| c == '-' || c == '_') {
+    if let Some(pos) = non_singular_string.rfind(['-', '_']) {
         let prefix = &non_singular_string[..=pos]; // includes the separator
         let last_word = &non_singular_string[pos + 1..];
         if last_word.is_empty() {
