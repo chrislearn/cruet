@@ -75,7 +75,7 @@ pub fn to_singular(non_singular_string: &str) -> String {
 }
 
 fn singularize_word(non_singular_string: &str) -> String {
-    if UNCOUNTABLE_WORDS.contains(&non_singular_string) {
+    if UNCOUNTABLE_WORDS.contains(non_singular_string) {
         non_singular_string.to_owned()
     } else {
         special_cases![non_singular_string,

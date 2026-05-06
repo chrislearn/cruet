@@ -102,7 +102,7 @@ pub fn to_plural(non_plural_string: &str) -> String {
 }
 
 fn pluralize_word(non_plural_string: &str) -> String {
-    if UNCOUNTABLE_WORDS.contains(&non_plural_string) {
+    if UNCOUNTABLE_WORDS.contains(non_plural_string) {
         non_plural_string.to_owned()
     } else {
         special_cases![non_plural_string,
